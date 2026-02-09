@@ -57,7 +57,7 @@ Battle-tested in high-stakes industrial workflows at **Ant Group** (Fraud Detect
 Current AGC evaluation suffers from four critical limitations that PyAGC is designed to address:
 
 | Problem | Status Quo | PyAGC Solution |
-|---|---|---|
+|:--|:--|:--|
 | **The Cora-fication of Datasets** | Over-reliance on small, homophilous citation networks | 12 datasets spanning 5 orders of magnitude, including industrial graphs with tabular features and low homophily |
 | **The Scalability Bottleneck** | Full-batch training limits methods to ~10⁵ nodes | Mini-batch implementations enabling training on 111M+ nodes with a single 32GB GPU |
 | **The Supervised Metric Paradox** | Unsupervised methods evaluated only with supervised metrics | Holistic evaluation with unsupervised structural metrics (Modularity, Conductance) + efficiency profiling |
@@ -188,7 +188,7 @@ PyAGC organizes the landscape of AGC algorithms under a unified **Encode-Cluster
 ```
 
 | Module | Options | Examples |
-|--------|---------|----------|
+|:-------|:--------|:---------|
 | **Encoder** | Parametric | GCN, GAT, GraphSAGE, GIN, SGFormer, Polynormer |
 | | Non-Parametric | Fixed graph filters, adaptive smoothing, Markov diffusion |
 | **Cluster** | Differentiable | Softmax pooling (DMoN, MinCut, Neuromap), Prototype-based (DEC, DinkNet) |
@@ -207,7 +207,7 @@ This decomposition enables plug-and-play experimentation — swap a GCN encoder 
 Our benchmark curates **12 datasets** spanning 5 orders of magnitude in scale, diverse domains, feature modalities, and homophily levels:
 
 | Scale   | Dataset        | Domain      | #Nodes      | #Edges        | Avg. Deg. | #Feat. | Feat. Type  | #Clusters | $\mathcal{H}_e$ | $\mathcal{H}_n$ |
-| ------- | -------------- | ----------- | ----------- | ------------- | --------- | ------ | ----------- | --------- | --------------- | --------------- |
+| :------ | :------------- | :---------- | :---------- | :------------ | :-------- | :----- | :---------- | :-------- | :-------------- | :-------------- |
 | Tiny    | **Cora**       | Citation    | 2,708       | 10,556        | 3.9       | 1,433  | Textual     | 7         | 0.81            | 0.83            |
 | Tiny    | **Photo**      | Co-purchase | 7,650       | 238,162       | 31.1      | 745    | Textual     | 8         | 0.83            | 0.84            |
 | Small   | **Physics**    | Co-author   | 34,493      | 495,924       | 14.4      | 8,415  | Textual     | 5         | 0.93            | 0.92            |
@@ -232,14 +232,14 @@ Our benchmark curates **12 datasets** spanning 5 orders of magnitude in scale, d
 #### Traditional Methods
 
 | Method                                                     | Venue  | Encoder             | Clusterer         | Optimization |
-| ---------------------------------------------------------- | ------ | ------------------- | ----------------- | ------------ |
+| :--------------------------------------------------------- | :----- | :------------------ | :---------------- | :----------- |
 | [KMeans](https://en.wikipedia.org/wiki/K-means_clustering) | —      | None (raw features) | Discrete (KMeans) | Decoupled    |
 | [Node2Vec](https://arxiv.org/abs/1607.00653)               | KDD'16 | Random Walk         | Discrete (KMeans) | Decoupled    |
 
 #### Non-Parametric Methods
 
 | Method                                                       | Venue   | Encoder         | Clusterer           | Optimization |
-| ------------------------------------------------------------ | ------- | --------------- | ------------------- | ------------ |
+| :----------------------------------------------------------- | :------ | :-------------- | :------------------ | :----------- |
 | [SSGC](https://openreview.net/forum?id=CYO5T-YjWZV)          | ICLR'21 | Adaptive Filter | Discrete (KMeans)   | Decoupled    |
 | [SAGSC](https://ojs.aaai.org/index.php/AAAI/article/view/25918) | AAAI'23 | Fixed Filter    | Discrete (Subspace) | Decoupled    |
 | [MS2CAG](https://arxiv.org/abs/2411.11074)                   | KDD'25  | Fixed Filter    | Discrete (SNEM)     | Decoupled    |
@@ -247,7 +247,7 @@ Our benchmark curates **12 datasets** spanning 5 orders of magnitude in scale, d
 #### Deep Decoupled Methods
 
 | Method                                                       | Venue        | Encoder | Clusterer | Core Objective                |
-| ------------------------------------------------------------ | ------------ | ------- | --------- | ----------------------------- |
+| :----------------------------------------------------------- | :----------- | :------ | :-------- | :---------------------------- |
 | [GAE](https://arxiv.org/abs/1611.07308)                      | NeurIPS-W'16 | GCN     | KMeans    | Graph Reconstruction          |
 | [DGI](https://arxiv.org/abs/1809.10341)                      | ICLR'19      | GCN     | KMeans    | Mutual Info Maximization      |
 | [CCASSG](https://arxiv.org/abs/2106.12484)                   | NeurIPS'21   | GCN     | KMeans    | Redundancy Reduction          |
@@ -258,7 +258,7 @@ Our benchmark curates **12 datasets** spanning 5 orders of magnitude in scale, d
 #### Deep Joint Methods
 
 | Method                                                       | Venue      | Encoder | Clusterer       | Core Objective           |
-| ------------------------------------------------------------ | ---------- | ------- | --------------- | ------------------------ |
+| :----------------------------------------------------------- | :--------- | :------ | :-------------- | :----------------------- |
 | [DAEGC](https://arxiv.org/abs/1906.06532)                    | IJCAI'19   | GAT     | Prototype (DEC) | Reconstruction + KL Div. |
 | [MinCut](https://proceedings.mlr.press/v119/bianchi20a.html) | ICML'20    | GCN     | Softmax         | Cut Minimization         |
 | [DMoN](https://jmlr.org/papers/v24/20-998.html)              | JMLR'23    | GCN     | Softmax         | Modularity Maximization  |
