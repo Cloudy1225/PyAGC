@@ -13,13 +13,5 @@ matplotlib
 # OGB
 ogb
 
-# Sphinx 相关
-sphinx>=6.0
-sphinx_rtd_theme
-sphinx-copybutton
-sphinx-autodoc-typehints
-nbsphinx
-myst_parser
-
 # PyG theme
 git+https://github.com/pyg-team/pyg_sphinx_theme.git
