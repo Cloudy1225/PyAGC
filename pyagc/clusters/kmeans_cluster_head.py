@@ -79,21 +79,21 @@ class KMeansClusterHead(BaseClusterHead):
             )
             labels = kmeans.fit_predict(z)
             self.cluster_centers = kmeans.cluster_centers_.detach()
-        # elif self.backend == "triton":
-        #     from pyagc.clusters.triton_kmeans import TritonKMeans
-        #     kmeans = TritonKMeans(
-        #         metric='euclidean',
-        #         init='k-means++',
-        #         n_clusters=self.n_clusters,
-        #         n_init=self.n_init,
-        #         max_iter=self.max_iter,
-        #         random_state=self.random_state,
-        #         verbose=False,
-        #         dtype=z.dtype,
-        #         device=z.device,
-        #     )
-        #     labels = kmeans.fit_predict(z)
-        #     self.cluster_centers = kmeans.cluster_centers_.detach()
+        elif self.backend == "triton":
+            from pyagc.clusters.triton_kmeans import TritonKMeans
+            kmeans = TritonKMeans(
+                metric='euclidean',
+                init='k-means++',
+                n_clusters=self.n_clusters,
+                n_init=self.n_init,
+                max_iter=self.max_iter,
+                random_state=self.random_state,
+                verbose=False,
+                dtype=z.dtype,
+                device=z.device,
+            )
+            labels = kmeans.fit_predict(z)
+            self.cluster_centers = kmeans.cluster_centers_.detach()
         else:
             kmeans = KMeans(
                 init='k-means++',
