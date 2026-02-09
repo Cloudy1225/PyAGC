@@ -220,7 +220,6 @@ docs/source/generated/
 # Datasets (large files — download at runtime)
 benchmark/data/*/
 !benchmark/data/.gitkeep
-data/
 
 # Model checkpoints & weights
 *.pt
