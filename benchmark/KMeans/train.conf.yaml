@@ -1,0 +1,85 @@
+default:
+  # Evaluation metrics
+  label_metrics: ['NMI', 'ARI', 'ACC', 'F1', 'Homo', 'Comp']
+  struct_metrics: ['Mod', 'Cond']
+
+  # K-Means clustering parameters
+  kmeans_backend: torch  # Options: torch, triton, sklearn
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  normalize_embeddings: true  # Whether to normalize embeddings before clustering
+
+# ============================================================================
+# Dataset-specific configurations
+# ============================================================================
+
+Cora:
+  normalize_embeddings: true
+  kmeans_backend: torch
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+
+Photo:
+  normalize_embeddings: true
+  kmeans_backend: torch
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+
+Physics:
+  normalize_embeddings: true
+  kmeans_backend: torch
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+
+HM:
+  normalize_embeddings: true
+  kmeans_backend: torch
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+Flickr:
+  normalize_embeddings: true
+  kmeans_backend: torch
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+
+ArXiv:
+  normalize_embeddings: true
+  kmeans_backend: torch
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+
+Reddit:
+  normalize_embeddings: true
+  kmeans_backend: torch
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+
+MAG:
+  normalize_embeddings: true
+  kmeans_backend: torch
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+
+Pokec:
+  normalize_embeddings: true
+  kmeans_backend: torch
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+
+Products:
+  normalize_embeddings: true
+  kmeans_backend: torch
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+
+WebTopic:
+  normalize_embeddings: true
+  kmeans_backend: torch
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+
+Papers100M:
+  normalize_embeddings: true
+  kmeans_backend: torch
+  kmeans_n_init: 10
+  kmeans_max_iter: 300

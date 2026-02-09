@@ -1,0 +1,25 @@
+# CPU-only PyTorch
+https://download.pytorch.org/whl/cpu/torch-2.8.0%2Bcpu-cp310-cp310-manylinux_2_28_x86_64.whl
+
+# CPU-only PyG
+torch-geometric>=2.7.0
+
+numpy>=1.19.5
+scipy
+scikit-learn
+pyyaml
+matplotlib
+
+# OGB
+ogb
+
+# Sphinx 相关
+sphinx>=6.0
+sphinx_rtd_theme
+sphinx-copybutton
+sphinx-autodoc-typehints
+nbsphinx
+myst_parser
+
+# PyG theme
+git+https://github.com/pyg-team/pyg_sphinx_theme.git

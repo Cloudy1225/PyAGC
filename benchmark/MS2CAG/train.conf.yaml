@@ -1,0 +1,110 @@
+default:
+  # MS2CAG model parameters
+  T: 10                    # Number of propagation steps
+  alpha: 0.9              # Decay factor for smoothing
+  gamma: 0.9              # Modularity parameter
+  tau: 50                 # Number of subspace iterations
+
+  # Clustering configuration
+  cluster_method: snem    # Options: snem, kmeans
+  snem_iterations: 100    # Number of iterations for SNEM rounding
+
+  # K-Means clustering parameters (only used if cluster_method is 'kmeans')
+  kmeans_backend: torch   # Options: torch, triton, sklearn
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  normalize_embeddings: true  # Whether to normalize embeddings before clustering
+
+  # Evaluation metrics
+  label_metrics: ['NMI', 'ARI', 'ACC', 'F1', 'Homo', 'Comp']
+  struct_metrics: ['Mod', 'Cond']
+
+  # Inference configuration
+  allow_cpu_fallback: true  # Allow fallback to CPU if GPU OOM
+
+# ============================================================================
+# Dataset-specific configurations
+# ============================================================================
+
+Cora:
+  T: 16
+  alpha: 1.2
+  gamma: 1.0
+  tau: 100
+  cluster_method: kmeans
+
+Photo:
+  T: 4
+  alpha: 1.5
+  gamma: 1.0
+  tau: 50
+  cluster_method: kmeans
+
+Physics:
+  T: 50
+  alpha: 1.2
+  gamma: 1.0
+  tau: 50
+  cluster_method: kmeans
+
+HM:
+  T: 1
+  alpha: 1.1
+  gamma: 1.0
+  tau: 50
+  cluster_method: kmeans
+
+Flickr:
+  T: 10
+  alpha: 2.0
+  gamma: 1.0
+  tau: 50
+  cluster_method: kmeans
+
+ArXiv:
+  T: 16
+  alpha: 2.5
+  gamma: 1.0
+  tau: 50
+  cluster_method: kmeans
+
+Reddit:
+  T: 10
+  alpha: 1.05
+  gamma: 1.0
+  tau: 50
+  cluster_method: kmeans
+
+MAG:
+  T: 16
+  alpha: 1.2
+  gamma: 1.0
+  tau: 50
+  cluster_method: kmeans
+
+Pokec:
+  T: 10
+  alpha: 1.1
+  gamma: 1.0
+  tau: 50
+  cluster_method: kmeans
+
+Products:
+  T: 16
+  alpha: 1.1
+  gamma: 1.0
+  tau: 50
+  cluster_method: kmeans
+
+WebTopic:
+  T: 10
+  alpha: 1.1
+  gamma: 1.0
+  tau: 50
+  cluster_method: kmeans
+
+Papers100M:
+  T: 10
+  alpha: 1.1
+  gamma: 1.0
+  tau: 50

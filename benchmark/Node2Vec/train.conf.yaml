@@ -1,0 +1,197 @@
+default:
+  # Training hyperparameters
+  lr: 0.01
+  wd: 0.0
+  epochs: 200
+  patience: 20
+
+  # Checkpoint settings
+  enable_checkpointing: true  # Enable/disable checkpoint saving (set false to skip all checkpoint operations)
+  save_every: null  # Save checkpoint every N epochs (null = disabled, only save best/last)
+  save_every_batch: null  # Save checkpoint every N batches (null = disabled, for large datasets)
+
+  # Evaluation metrics
+  label_metrics: ['NMI', 'ARI', 'ACC', 'F1', 'Homo', 'Comp']
+  struct_metrics: ['Mod', 'Cond']
+
+  # Model architecture
+  embedding_dim: 128
+  walk_length: 10
+  context_size: 10
+  walks_per_node: 10
+  num_negative_samples: 1
+  p: 1.0  # Return parameter
+  q: 1.0  # In-out parameter
+  sparse: false  # Use sparse gradients
+  batch_size: 128
+  cpu_embedding: false  # Store embeddings on CPU (for very large graphs)
+
+  # K-Means clustering parameters
+  kmeans_backend: torch  # Options: torch, triton, sklearn
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  normalize_embeddings: true
+
+# ============================================================================
+# Dataset-specific configurations
+# ============================================================================
+
+# Small scale datasets (< 50K nodes)
+Cora:
+  epochs: 100
+  embedding_dim: 128
+  walk_length: 10
+  context_size: 10
+  walks_per_node: 10
+  p: 1.0
+  q: 1.0
+  batch_size: 128
+  lr: 0.01
+  sparse: false
+
+Photo:
+  epochs: 100
+  embedding_dim: 128
+  walk_length: 10
+  context_size: 10
+  walks_per_node: 10
+  p: 1.0
+  q: 1.0
+  batch_size: 256
+  lr: 0.01
+  sparse: false
+
+Physics:
+  epochs: 100
+  embedding_dim: 128
+  walk_length: 10
+  context_size: 10
+  walks_per_node: 10
+  p: 1.0
+  q: 1.0
+  batch_size: 512
+  lr: 0.01
+  sparse: false
+
+HM:
+  epochs: 50
+  embedding_dim: 128
+  walk_length: 10
+  context_size: 10
+  walks_per_node: 10
+  p: 1.0
+  q: 1.0
+  batch_size: 256
+  lr: 0.01
+  sparse: false
+
+# Medium scale datasets (50K - 3M nodes)
+Flickr:
+  epochs: 50
+  embedding_dim: 128
+  walk_length: 10
+  context_size: 10
+  walks_per_node: 10
+  p: 1.0
+  q: 1.0
+  batch_size: 512
+  lr: 0.01
+  sparse: false
+
+ArXiv:
+  epochs: 50
+  embedding_dim: 128
+  walk_length: 10
+  context_size: 10
+  walks_per_node: 10
+  p: 1.0
+  q: 1.0
+  batch_size: 256
+  lr: 0.01
+  sparse: false
+  enable_checkpointing: false
+
+Reddit:
+  epochs: 20
+  embedding_dim: 128
+  walk_length: 10
+  context_size: 10
+  walks_per_node: 10
+  p: 1.0
+  q: 1.0
+  batch_size: 512
+  lr: 0.01
+  sparse: false
+  enable_checkpointing: false
+
+MAG:
+  epochs: 20
+  embedding_dim: 128
+  walk_length: 10
+  context_size: 10
+  walks_per_node: 10
+  p: 1.0
+  q: 1.0
+  batch_size: 512
+  lr: 0.01
+  sparse: false
+  enable_checkpointing: false
+
+Pokec:
+  epochs: 20
+  embedding_dim: 128
+  walk_length: 10
+  context_size: 10
+  walks_per_node: 10
+  p: 1.0
+  q: 1.0
+  batch_size: 512
+  lr: 0.01
+  sparse: false
+  enable_checkpointing: false
+
+# Large scale datasets (> 3M nodes)
+Products:
+  epochs: 20
+  embedding_dim: 128
+  walk_length: 10
+  context_size: 10
+  walks_per_node: 10
+  p: 1.0
+  q: 1.0
+  batch_size: 16384
+  lr: 0.01
+  sparse: true
+  enable_checkpointing: false
+
+WebTopic:
+  epochs: 20
+  embedding_dim: 128
+  walk_length: 10
+  context_size: 10
+  walks_per_node: 10
+  p: 1.0
+  q: 1.0
+  batch_size: 16384
+  lr: 0.01
+  sparse: true
+  enable_checkpointing: false
+
+Papers100M:
+  epochs: 1
+  embedding_dim: 128
+  walk_length: 10
+  context_size: 10
+  walks_per_node: 10
+  p: 1.0
+  q: 1.0
+  # batch_size: 8192
+  batch_size: 32768
+  lr: 0.01
+  sparse: true
+  patience: 5
+  enable_checkpointing: false  # Disable checkpointing for very large models to save time & memory
+  save_every: 1
+  save_every_batch: 500  # Save every 500 batches for Papers100M
+  cpu_embedding: true  # Critical for Papers100M (111M nodes)
+  # python main.py --dataset Papers100M --device cuda:7 --root /tmp/PyAGC/benchmark/data/

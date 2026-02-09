@@ -1,0 +1,287 @@
+default:
+  # Pretraining hyperparameters
+  pretrain_lr: 0.01
+  pretrain_epochs: 200
+
+  # Finetuning hyperparameters
+  finetune_lr: 0.001
+  finetune_epochs: 200
+
+  # Common hyperparameters
+  wd: 0.0
+  patience: 50
+
+  # Checkpoint settings
+  pretrain_save_every: null  # Save checkpoint every N epochs (null = disabled)
+  pretrain_save_every_batch: null  # Save checkpoint every N batches (null = disabled)
+  finetune_save_every: null
+  finetune_save_every_batch: null
+
+  # Training mode configuration
+  mini_batch: false  # Whether to use mini-batch training
+
+  # Evaluation settings
+  eval_pretrain: true  # Whether to evaluate clustering after pretraining
+
+  # Evaluation metrics
+  label_metrics: ['NMI', 'ARI', 'ACC', 'F1', 'Homo', 'Comp']
+  struct_metrics: ['Mod', 'Cond']
+
+  # GNN architecture
+  gnn_type: gat  # DAEGC uses GAT encoder
+
+  # Model architecture
+  hidden_channels: 256
+  num_layers: 2
+  dropout: 0.0
+  act: elu
+  act_first: false
+  act_last: false
+  norm: null  # Options: null/none, batch_norm, layer_norm
+
+  # GAT-specific parameters
+  heads: 1
+  concat: true
+
+  # DAEGC-specific parameters
+  gamma: 10.0  # Weight for clustering loss
+  update_interval: 5  # Update target distribution every N iterations
+
+  # Mini-batch training parameters
+  fan_out: 10
+  batch_size: 16384
+  num_workers: 8
+
+  # Inference configuration
+  force_full_batch_inference: false  # Try full-batch inference even if mini_batch=true
+  allow_cpu_fallback: true  # Allow fallback to CPU full-batch if GPU OOM
+  infer_batch_size: 256  # Batch size for inference; can be larger than batch_size
+  infer_fan_out: -1  # -1 means sample all neighbors
+
+  # K-Means clustering parameters (for pretrain evaluation)
+  kmeans_backend: torch  # Options: torch, triton, sklearn
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  normalize_embeddings: true  # Whether to normalize embeddings before clustering
+
+# ============================================================================
+# Dataset-specific configurations
+# ============================================================================
+
+Cora:
+  mini_batch: false
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  pretrain_lr: 0.01
+  finetune_lr: 0.001
+  pretrain_epochs: 200
+  finetune_epochs: 100
+  hidden_channels: 64
+  num_layers: 2
+  heads: 4
+  gamma: 10.0
+  update_interval: 5
+  eval_pretrain: true
+
+Photo:
+  mini_batch: false
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  pretrain_lr: 0.01
+  finetune_lr: 0.001
+  pretrain_epochs: 200
+  finetune_epochs: 100
+  hidden_channels: 256
+  num_layers: 1
+  heads: 1
+  gamma: 10.0
+  update_interval: 5
+  eval_pretrain: true
+
+Physics:
+  mini_batch: true
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  pretrain_lr: 0.01
+  finetune_lr: 0.001
+  pretrain_epochs: 50
+  finetune_epochs: 50
+  hidden_channels: 256
+  num_layers: 2
+  batch_size: 18000
+  infer_fan_out: 10
+  heads: 1
+  gamma: 10.0
+  update_interval: 5
+  eval_pretrain: true
+
+HM:
+  mini_batch: true
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  pretrain_lr: 0.01
+  finetune_lr: 0.001
+  pretrain_epochs: 10
+  finetune_epochs: 10
+  hidden_channels: 128
+  num_layers: 1
+  batch_size: 16384
+  heads: 1
+  gamma: 10.0
+  update_interval: 5
+  infer_fan_out: 10
+  eval_pretrain: true
+
+Flickr:
+  mini_batch: true
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  pretrain_lr: 0.01
+  finetune_lr: 0.001
+  pretrain_epochs: 50
+  finetune_epochs: 50
+  hidden_channels: 128
+  num_layers: 2
+  batch_size: 16384
+  infer_batch_size: 65536
+  heads: 1
+  gamma: 10.0
+  update_interval: 5
+  eval_pretrain: true
+
+ArXiv:
+  mini_batch: true
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  pretrain_lr: 0.001
+  finetune_lr: 0.0001
+  pretrain_epochs: 50
+  finetune_epochs: 50
+  hidden_channels: 64
+  num_layers: 3
+  norm: batch_norm
+  batch_size: 16384
+  infer_batch_size: 65536
+  heads: 1
+  gamma: 10.0
+  update_interval: 5
+  eval_pretrain: true
+
+Reddit:
+  mini_batch: true
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  pretrain_lr: 0.01
+  finetune_lr: 0.0001
+  pretrain_epochs: 50
+  finetune_epochs: 20
+  hidden_channels: 256
+  num_layers: 2
+  norm: batch_norm
+  batch_size: 16384
+  infer_batch_size: 65536
+  # infer_fan_out: 10
+  heads: 1
+  gamma: 10.0
+  update_interval: 5
+  eval_pretrain: true
+
+MAG:
+  mini_batch: true
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  pretrain_lr: 0.001
+  finetune_lr: 0.0001
+  pretrain_epochs: 50
+  finetune_epochs: 50
+  hidden_channels: 256
+  num_layers: 2
+  norm: batch_norm
+  batch_size: 16384
+  infer_batch_size: 16384
+  # infer_fan_out: 10
+  heads: 1
+  gamma: 10.0
+  update_interval: 5
+  eval_pretrain: true
+
+Pokec:
+  mini_batch: true
+  force_full_batch_inference: true
+  allow_cpu_fallback: false
+  pretrain_lr: 0.001
+  finetune_lr: 0.0001
+  pretrain_epochs: 10
+  finetune_epochs: 10
+  hidden_channels: 256
+  num_layers: 2
+  norm: batch_norm
+  batch_size: 16384
+  infer_batch_size: 32768
+  infer_fan_out: 10
+  heads: 1
+  gamma: 10.0
+  update_interval: 5
+  eval_pretrain: true
+
+Products:
+  mini_batch: true
+  force_full_batch_inference: true
+  allow_cpu_fallback: false
+  pretrain_lr: 0.001
+  finetune_lr: 0.0001
+  pretrain_epochs: 20
+  finetune_epochs: 10
+  hidden_channels: 256
+  num_layers: 2
+  norm: batch_norm
+  batch_size: 16384
+  infer_batch_size: 16384
+  infer_fan_out: 10
+  heads: 1
+  gamma: 10.0
+  update_interval: 5
+  eval_pretrain: true
+
+WebTopic:
+  mini_batch: true
+  force_full_batch_inference: true
+  allow_cpu_fallback: false
+  pretrain_lr: 0.001
+  finetune_lr: 0.0001
+  pretrain_epochs: 10
+  finetune_epochs: 10
+  hidden_channels: 128
+  num_layers: 2
+  batch_size: 16384
+  infer_batch_size: 32768
+  infer_fan_out: 10  # Limit neighbors for very large graphs
+  heads: 1
+  gamma: 10.0
+  update_interval: 5
+  eval_pretrain: true
+
+Papers100M:
+  mini_batch: true
+  force_full_batch_inference: false  # Too large for full-batch
+  allow_cpu_fallback: false  # Not needed for mini-batch
+  pretrain_lr: 0.001
+  finetune_lr: 0.0001
+  pretrain_epochs: 1
+  finetune_epochs: 1
+  hidden_channels: 64
+  num_layers: 2
+  batch_size: 16384
+  infer_batch_size: 32768
+  infer_fan_out: 10  # Limit neighbors for very large graphs
+  norm: batch_norm
+  heads: 1
+  gamma: 10.0
+  update_interval: 5
+  eval_pretrain: true
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  pretrain_save_every: 1  # Save at end of each epoch
+  pretrain_save_every_batch: 500  # Save every 500 batches
+  finetune_save_every: 1
+  finetune_save_every_batch: 500

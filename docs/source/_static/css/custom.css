@@ -1,0 +1,5 @@
+/* PyAGC inline logo */
+span.inline-logo.pyagc {
+  padding-left: 28px;
+  background-image: url(../img/pyagc_logo.svg);
+}

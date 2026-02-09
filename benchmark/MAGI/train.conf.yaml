@@ -1,0 +1,346 @@
+default:
+  # Training hyperparameters
+  lr: 0.0005
+  wd: 0.001
+  epochs: 400
+  patience: 50
+
+  # Checkpoint settings
+  save_every: null  # Save checkpoint every N epochs (null = disabled, only save best/last)
+  save_every_batch: null  # Save checkpoint every N batches (null = disabled, for large datasets)
+
+  # Training mode configuration
+  mini_batch: false  # Whether to use mini-batch training
+
+  # Evaluation metrics
+  label_metrics: ['NMI', 'ARI', 'ACC', 'F1', 'Homo', 'Comp']
+  struct_metrics: ['Mod', 'Cond']
+
+  # GNN architecture
+  gnn_type: gcn  # Options: gcn, sage, gat, gatv2, gin
+
+  # Model architecture
+  hidden_channels: 64
+  num_layers: 2
+  dropout: 0.0
+  act: leaky_relu
+  act_first: false
+  act_last: false
+  norm: null  # Options: null/none, batch_norm, layer_norm
+  residual: false
+  pre_linear: false
+  jk: null  # Options: null, last, cat, max, lstm
+
+  # GNN-specific parameters
+  # GCN
+  add_self_loops: null
+  normalize: true
+  improved: false
+  cached: true  # transductive
+
+  # GraphSAGE
+  aggr: mean  # Options: mean, max, sum
+  project: false
+
+  # GAT/GATv2
+  heads: 1
+  concat: true
+  negative_slope: 0.5
+
+  # GIN
+  train_eps: false
+
+  # MAGI-specific parameters
+  num_walks: 100  # Number of random walks per node (wt in paper)
+  walk_length: 2  # Length of random walks (wl in paper)
+  tau: 0.5        # Temperature parameter for contrastive loss
+  scale_embeddings: true  # Whether to apply min-max scaling before normalization
+
+  # Mini-batch training parameters
+  fan_out: 10
+  batch_size: 2048
+  num_workers: 8
+
+  # Inference configuration
+  force_full_batch_inference: false  # Try full-batch inference even if mini_batch=true
+  allow_cpu_fallback: true  # Allow fallback to CPU full-batch if GPU OOM
+  infer_batch_size: null  # If null, use batch_size; can be larger than batch_size
+  infer_fan_out: -1  # -1 means sample all neighbors
+
+  # K-Means clustering parameters
+  kmeans_backend: torch  # Options: torch, triton, sklearn
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  normalize_embeddings: true  # Whether to normalize embeddings before clustering
+
+# ============================================================================
+# Dataset-specific configurations
+# ============================================================================
+
+Cora:
+  mini_batch: false
+  gnn_type: gcn
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  epochs: 400
+  hidden_channels: 512
+  num_layers: 1
+  dropout: 0.1
+  norm: null
+  act: leaky_relu
+  negative_slope: 0.5
+  num_walks: 100
+  walk_length: 2
+  tau: 0.3
+  lr: 0.0005
+  wd: 0.001
+  scale_embeddings: true
+
+Photo:
+  mini_batch: false
+  gnn_type: gcn
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  epochs: 500
+  hidden_channels: 64
+  num_layers: 1
+  dropout: 0.
+  norm: null
+  act: leaky_relu
+  negative_slope: 0.5
+  num_walks: 100
+  walk_length: 3
+  tau: 0.5
+  lr: 0.0005
+  wd: 0.001
+  scale_embeddings: true
+
+Physics:
+  mini_batch: true
+  gnn_type: gcn
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  epochs: 100
+  hidden_channels: 512
+  num_layers: 1
+  dropout: 0.1
+  norm: null
+  act: leaky_relu
+  negative_slope: 0.5
+  batch_size: 2048
+  fan_out: 10
+  num_walks: 20
+  walk_length: 4
+  tau: 0.7
+  lr: 0.0005
+  wd: 0.001
+  scale_embeddings: true
+
+HM:
+  mini_batch: true
+  gnn_type: gcn
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  epochs: 400
+  hidden_channels: 512
+  num_layers: 1
+  dropout: 0.1
+  norm: null
+  act: leaky_relu
+  negative_slope: 0.5
+  batch_size: 2048
+  fan_out: 10
+  num_walks: 20
+  walk_length: 4
+  tau: 0.5
+  lr: 0.0005
+  wd: 0.001
+  scale_embeddings: true
+
+Flickr:
+  mini_batch: true
+  gnn_type: sage
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  epochs: 100
+  hidden_channels: 256
+  num_layers: 2
+  dropout: 0.0
+  norm: null
+  act: leaky_relu
+  negative_slope: 0.5
+  batch_size: 2048
+  infer_batch_size: 256
+  fan_out: 10
+  num_walks: 20
+  walk_length: 4
+  tau: 0.5
+  lr: 0.01
+  wd: 0.0
+  scale_embeddings: false
+
+ArXiv:
+  mini_batch: true
+  gnn_type: sage
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  epochs: 150
+  hidden_channels: 256
+  num_layers: 2
+  dropout: 0.0
+  norm: null
+  act: leaky_relu
+  negative_slope: 0.1
+  batch_size: 2048
+  infer_batch_size: 256
+  fan_out: 10
+  num_walks: 20
+  walk_length: 5
+  tau: 0.9
+  lr: 0.01
+  wd: 0.0
+  scale_embeddings: false
+
+Reddit:
+  mini_batch: true
+  gnn_type: sage
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  epochs: 200
+  hidden_channels: 256
+  num_layers: 2
+  dropout: 0.0
+  norm: null
+  act: leaky_relu
+  negative_slope: 0.5
+  batch_size: 2048
+  infer_batch_size: 256
+  fan_out: 10
+  num_walks: 20
+  walk_length: 5
+  tau: 0.5
+  lr: 0.01
+  wd: 0.0
+  scale_embeddings: false
+
+MAG:
+  mini_batch: true
+  gnn_type: sage
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  epochs: 20
+  hidden_channels: 256
+  num_layers: 2
+  dropout: 0.0
+  norm: null
+  act: leaky_relu
+  negative_slope: 0.5
+  batch_size: 2048
+  infer_batch_size: 256
+  fan_out: 10
+  num_walks: 20
+  walk_length: 4
+  tau: 0.5
+  lr: 0.01
+  wd: 0.0
+  scale_embeddings: false
+
+Pokec:
+  mini_batch: true
+  gnn_type: sage
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  epochs: 20
+  hidden_channels: 256
+  num_layers: 2
+  dropout: 0.0
+  norm: null
+  act: leaky_relu
+  negative_slope: 0.5
+  batch_size: 2048
+  infer_batch_size: 256
+  fan_out: 10
+  num_walks: 20
+  walk_length: 4
+  tau: 0.5
+  lr: 0.01
+  wd: 0.0
+  scale_embeddings: false
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+
+Products:
+  mini_batch: true
+  gnn_type: sage
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  epochs: 20
+  hidden_channels: 256
+  num_layers: 1
+  dropout: 0.0
+  norm: null
+  act: leaky_relu
+  negative_slope: 0.1
+  batch_size: 2048
+  infer_batch_size: 128
+  fan_out: 10
+  num_walks: 20
+  walk_length: 4
+  tau: 0.9
+  lr: 0.01
+  wd: 0.0
+  scale_embeddings: false
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+
+WebTopic:
+  mini_batch: true
+  gnn_type: sage
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  epochs: 20
+  hidden_channels: 256
+  num_layers: 2
+  dropout: 0.0
+  norm: null
+  act: leaky_relu
+  negative_slope: 0.5
+  batch_size: 2048
+  infer_batch_size: 65536
+  fan_out: 10
+  infer_fan_out: 10  # Limit neighbors to avoid OOM
+  num_walks: 20
+  walk_length: 4
+  tau: 0.5
+  lr: 0.01
+  wd: 0.0
+  scale_embeddings: false
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+
+Papers100M:
+  mini_batch: true
+  gnn_type: sage
+  force_full_batch_inference: false  # Too large for full-batch
+  allow_cpu_fallback: false  # Not needed for mini-batch
+  epochs: 1
+  hidden_channels: 128
+  num_layers: 2
+  dropout: 0.0
+  norm: null
+  act: leaky_relu
+  negative_slope: 0.1
+  batch_size: 2048
+  infer_batch_size: 32768
+  fan_out: 10
+  infer_fan_out: 10  # Limit neighbors for very large graphs
+  num_walks: 20
+  walk_length: 3
+  tau: 0.9
+  lr: 0.01
+  wd: 0.0
+  scale_embeddings: false
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  save_every: 1  # Save at end of each epoch
+  save_every_batch: 500  # Save every 500 batches for recovery

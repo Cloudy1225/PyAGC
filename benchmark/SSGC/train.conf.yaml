@@ -1,0 +1,73 @@
+default:
+  # SSGC model parameters
+  num_layers: 5  # Number of hops K
+  alpha: 0.05  # Teleport probability (0 < alpha < 1)
+  cached: false  # Cache the propagation result
+  add_self_loops: true  # Add self-loops to adjacency matrix
+
+  # Evaluation metrics
+  label_metrics: ['NMI', 'ARI', 'ACC', 'F1', 'Homo', 'Comp']
+  struct_metrics: ['Mod', 'Cond']
+
+  # Inference configuration
+  allow_cpu_fallback: true  # Allow fallback to CPU if GPU OOM
+
+  # K-Means clustering parameters
+  kmeans_backend: torch  # Options: torch, triton, sklearn
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  normalize_embeddings: true  # Whether to normalize embeddings before clustering
+
+# ============================================================================
+# Dataset-specific configurations
+# Based on the SSGC paper recommendations for different graph types
+# ============================================================================
+
+Cora:
+  num_layers: 12
+  alpha: 0.05
+
+Photo:
+  num_layers: 12
+  alpha: 0.05
+
+Physics:
+  num_layers: 20
+  alpha: 0.05
+
+HM:
+  num_layers: 1
+  alpha: 0.05
+
+Flickr:
+  num_layers: 10
+  alpha: 0.05
+
+ArXiv:
+  num_layers: 32
+  alpha: 0.05
+
+Reddit:
+  num_layers: 16
+  alpha: 0.05
+
+MAG:
+  num_layers: 10
+  alpha: 0.05
+
+Pokec:
+  num_layers: 7
+  alpha: 0.05
+
+Products:
+  num_layers: 10
+  alpha: 0.05
+
+WebTopic:
+  num_layers: 4
+  alpha: 0.05
+
+Papers100M:
+  num_layers: 3
+  alpha: 0.05
+  cached: false  # Don't cache for large graphs

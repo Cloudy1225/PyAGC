@@ -1,0 +1,112 @@
+default:
+  # S2CAG model parameters
+  T: 10                    # Number of propagation steps
+  alpha: 0.9              # Decay factor for smoothing
+  tau: 7                  # Number of iterations for SVD approximation
+  oversampling: 10        # Oversampling parameter for randomized SVD
+
+  # Clustering configuration
+  cluster_method: snem    # Options: snem, kmeans
+  snem_iterations: 100    # Number of iterations for SNEM rounding
+
+  # K-Means clustering parameters (only used if cluster_method is 'kmeans')
+  kmeans_backend: torch   # Options: torch, triton, sklearn
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  normalize_embeddings: true  # Whether to normalize embeddings before clustering
+
+  # Evaluation metrics
+  label_metrics: ['NMI', 'ARI', 'ACC', 'F1', 'Homo', 'Comp']
+  struct_metrics: ['Mod', 'Cond']
+
+  # Inference configuration
+  allow_cpu_fallback: true  # Allow fallback to CPU if GPU OOM
+
+# ============================================================================
+# Dataset-specific configurations
+# ============================================================================
+
+Cora:
+  T: 20
+  alpha: 0.9
+  tau: 7
+
+CiteSeer:
+  T: 60
+  alpha: 0.8
+  tau: 7
+
+PubMed:
+  T: 175
+  alpha: 1.8
+  tau: 7
+
+CoraFull:
+  T: 20
+  alpha: 0.9
+  tau: 7
+
+Photo:
+  T: 9
+  alpha: 1.5
+  tau: 7
+
+Computers:
+  T: 10
+  alpha: 0.9
+  tau: 7
+
+CS:
+  T: 10
+  alpha: 0.9
+  tau: 7
+
+Physics:
+  T: 10
+  alpha: 0.9
+  tau: 7
+
+Flickr:
+  T: 10
+  alpha: 0.9
+  tau: 7
+
+ArXiv:
+  T: 30
+  alpha: 1.4
+  tau: 4
+
+Reddit:
+  T: 10
+  alpha: 0.9
+  tau: 7
+
+MAG:
+  T: 10
+  alpha: 0.9
+  tau: 7
+
+Pokec:
+  T: 10
+  alpha: 0.9
+  tau: 7
+
+Products:
+  T: 10
+  alpha: 0.9
+  tau: 7
+
+WebTopic:
+  T: 10
+  alpha: 0.9
+  tau: 7
+
+Papers100M:
+  T: 10
+  alpha: 0.9
+  tau: 7
+
+HM:
+  T: 10
+  alpha: 0.9
+  tau: 7

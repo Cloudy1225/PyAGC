@@ -1,0 +1,57 @@
+default:
+  # SAGSC model parameters
+  num_layers: 2  # Propagation order p
+  bias: 0.7071067811865476  # 2^(-0.5), quadratic kernel bias
+
+  # Evaluation metrics
+  label_metrics: ['NMI', 'ARI', 'ACC', 'F1', 'Homo', 'Comp']
+  struct_metrics: ['Mod', 'Cond']
+
+  # Inference configuration
+  allow_cpu_fallback: true  # Allow fallback to CPU if GPU OOM
+
+  # K-Means clustering parameters
+  kmeans_backend: torch  # Options: torch, triton, sklearn
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  normalize_embeddings: true  # Whether to normalize embeddings before clustering
+
+# ============================================================================
+# Dataset-specific configurations
+# ============================================================================
+
+Cora:
+  num_layers: 5
+
+Photo:
+  num_layers: 2
+
+Physics:
+  num_layers: 50
+
+HM:
+  num_layers: 1
+
+Flickr:
+  num_layers: 10
+
+ArXiv:
+  num_layers: 10
+
+Reddit:
+  num_layers: 3
+
+MAG:
+  num_layers: 10
+
+Pokec:
+  num_layers: 15
+
+Products:
+  num_layers: 15
+
+WebTopic:
+  num_layers: 6
+
+Papers100M:
+  num_layers: 2

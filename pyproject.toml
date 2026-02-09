@@ -1,0 +1,86 @@
+[tool.setuptools]
+packages = ["pyagc"]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyagc"
+version = "1.0.0"
+description = "PyAGC: A PyTorch library for Attributed Graph Clustering."
+readme = "README.md"
+authors=[
+    {name="Yunhui Liu", email="lyhcloudy1225@gmail.com"},
+]
+license = {text = "MIT"}
+requires-python = ">=3.10"
+keywords=[
+    "attributed graph clustering",
+    "graph neural networks",
+    "graph-clustering",
+    "community detection",
+    "pytorch-geometric",
+    "pytorch",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+  "torch-geometric >= 2.7.0",
+  "torch",
+  "scikit-learn",
+  "numpy",
+  "scipy",
+  "matplotlib",
+  "pyyaml",
+  "ogb",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "sphinx>=6.0",
+  "sphinx_rtd_theme",
+  "nbsphinx",
+  "myst_parser",
+  "sphinx-copybutton",
+  "sphinx-autodoc-typehints",
+  "black",
+  "flake8",
+  "isort",
+  "mypy",
+  "pre-commit",
+]
+docs = [
+  "sphinx>=6.0",
+  "sphinx_rtd_theme",
+  "nbsphinx",
+  "myst_parser",
+  "sphinx-copybutton",
+  "sphinx-autodoc-typehints",
+]
+benchmark = [
+  "ogb",
+]
+triton = [
+  "triton",
+]
+test = [
+  "pytest"
+]
+
+[project.urls]
+Documentation = "https://pyagc.readthedocs.io"
+Repository = "https://github.com/Cloudy1225/PyAGC"
+
+[tool.uv]
+package = true
+python-preference = "managed"

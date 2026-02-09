@@ -1,0 +1,183 @@
+default:
+  # Training hyperparameters
+  lr: 0.01
+  wd: 0.0
+  epochs: 200
+  patience: 20
+
+  # Checkpoint settings
+  enable_checkpointing: true  # Enable/disable checkpoint saving (set false to skip all checkpoint operations)
+  save_every: null  # Save checkpoint every N epochs (null = disabled, only save best/last)
+  save_every_batch: null  # Save checkpoint every N batches (null = disabled, for large datasets)
+
+  # Evaluation metrics
+  label_metrics: ['NMI', 'ARI', 'ACC', 'F1', 'Homo', 'Comp']
+  struct_metrics: ['Mod', 'Cond']
+
+  # Model architecture
+  hidden_channels: 256
+  walk_length: 3
+  walks_per_node: 10
+  batch_size: 512
+
+  # Diffusion parameters
+  k_hop: 2
+  diffusion_method: ppr  # Options: ppr, heat, custom
+  alpha: 0.2  # For PPR diffusion
+  heat_t: 5.0  # For heat diffusion
+
+  # Scale selection
+  scale: auto  # Options: auto, small, medium, large
+
+  # K-Means clustering parameters
+  kmeans_backend: torch  # Options: torch, triton, sklearn
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  normalize_embeddings: true
+
+# ============================================================================
+# Dataset-specific configurations
+# ============================================================================
+
+# Small scale datasets (< 50K nodes)
+Cora:
+  epochs: 200
+  hidden_channels: 256
+  walk_length: 3
+  walks_per_node: 10
+  batch_size: 2708
+  diffusion_method: ppr
+  alpha: 0.2
+  k_hop: 3
+  scale: small
+
+Photo:
+  epochs: 200
+  hidden_channels: 256
+  walk_length: 5
+  walks_per_node: 10
+  batch_size: 7650
+  diffusion_method: ppr
+  alpha: 0.2
+  k_hop: 2
+  scale: small
+
+Physics:
+  epochs: 50
+  hidden_channels: 256
+  walk_length: 5
+  walks_per_node: 10
+  batch_size: 34493
+  diffusion_method: ppr
+  alpha: 0.2
+  k_hop: 2
+  scale: small
+
+HM:
+  epochs: 20
+  hidden_channels: 256
+  walk_length: 3
+  walks_per_node: 5
+  batch_size: 256
+  diffusion_method: ppr
+  alpha: 0.2
+  k_hop: 2
+  scale: medium
+
+Flickr:
+  epochs: 50
+  hidden_channels: 256
+  walk_length: 5
+  walks_per_node: 10
+  batch_size: 2048
+  diffusion_method: ppr
+  alpha: 0.2
+  k_hop: 3
+  scale: medium
+
+ArXiv:
+  epochs: 20
+  hidden_channels: 256
+  walk_length: 5
+  walks_per_node: 10
+  batch_size: 256
+  diffusion_method: ppr
+  alpha: 0.2
+  k_hop: 3
+  scale: medium
+
+Reddit:
+  epochs: 50
+  hidden_channels: 256
+  walk_length: 5
+  walks_per_node: 20
+  batch_size: 256
+  diffusion_method: ppr
+  alpha: 0.2
+  k_hop: 2
+  scale: medium
+  enable_checkpointing: false
+
+MAG:
+  epochs: 20
+  hidden_channels: 256
+  walk_length: 5
+  walks_per_node: 10
+  batch_size: 1024
+  diffusion_method: ppr
+  alpha: 0.2
+  k_hop: 2
+  scale: medium
+  enable_checkpointing: false
+
+Pokec:
+  epochs: 20
+  hidden_channels: 256
+  walk_length: 5
+  walks_per_node: 10
+  batch_size: 512
+  diffusion_method: ppr
+  alpha: 0.2
+  k_hop: 2
+  scale: medium
+  enable_checkpointing: false
+
+Products:
+  epochs: 20
+  hidden_channels: 256
+  walk_length: 5
+  walks_per_node: 10
+  batch_size: 16384
+  diffusion_method: ppr
+  alpha: 0.2
+  k_hop: 2
+  scale: medium
+  enable_checkpointing: false
+
+WebTopic:
+  epochs: 20
+  hidden_channels: 128
+  walk_length: 5
+  walks_per_node: 10
+  batch_size: 1024
+  diffusion_method: ppr
+  alpha: 0.2
+  k_hop: 2
+  scale: medium
+  enable_checkpointing: false
+
+Papers100M:
+  epochs: 1
+  hidden_channels: 64
+  walk_length: 5
+  walks_per_node: 10
+  batch_size: 32768
+  diffusion_method: ppr
+  alpha: 0.2
+  k_hop: 2
+  scale: large
+  patience: 5
+  enable_checkpointing: false  # Disable checkpointing for very large models to save time & memory
+  save_every: 1
+  save_every_batch: 500
+  # python main.py --device cuda:7 --dataset Papers100M --root /tmp/PyAGC/benchmark/data/ --cache_dir /tmp/PyAGC/benchmark/data/cache/
