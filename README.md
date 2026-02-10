@@ -8,7 +8,7 @@
     <a href="https://github.com/Cloudy1225/PyAGC"><img src="https://img.shields.io/github/stars/Cloudy1225/PyAGC.svg?style=social" alt="GitHub Stars"></a>
   </p>
   <p>
-    <a href="https://arxiv.org"><strong>Paper</strong></a> | 
+    <a href="https://arxiv.org/abs/2602.08519"><strong>Paper</strong></a> | 
     <a href="https://pyagc.readthedocs.io"><strong>Documentation</strong></a> | 
     <a href="https://pypi.org/project/pyagc"><strong>PyPI</strong></a> | 
     <a href="benchmark/results/"><strong>Benchmark Results</strong></a>
@@ -490,9 +490,10 @@ If you find PyAGC useful in your research, please cite our paper:
 @article{liu2026bridging,
   title={Bridging Academia and Industry: A Comprehensive Benchmark for Attributed Graph Clustering},
   author={Yunhui Liu and Pengyu Qiu and Yu Xing and Yongchao Liu and Peng Du and Chuntao Hong and Jiajun Zheng and Tao Zheng and Tieke He},
-  year          = {2026},
-  archivePrefix = {arXiv},
-  primaryClass  = {cs.LG}
+  year={2026},
+  eprint={2602.08519},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG}
 }
 ```
 
@@ -529,7 +530,7 @@ We thank Ant Group for supporting the industrial validation of this benchmark.
 ---
 
 <p align="center">
-  <a href="https://github.com/Cloudy1225/PyAGC">GitHub</a> · <a href="https://pypi.org/project/PyAGC">PyPI</a> · <a href="https://pyagc.readthedocs.io">Documentation</a> · <a href="https://arxiv.org">Paper</a>
+  <a href="https://github.com/Cloudy1225/PyAGC">GitHub</a> · <a href="https://pypi.org/project/PyAGC">PyPI</a> · <a href="https://pyagc.readthedocs.io">Documentation</a> · <a href="https://arxiv.org/abs/2602.08519">Paper</a>
   <br>
   Made with ❤️ for the Graph ML Community
 </p>
