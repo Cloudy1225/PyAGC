@@ -3,15 +3,16 @@
   <h1>Bridging Academia and Industry for Attributed Graph Clustering</h1>
   <p>
     <a href="https://pypi.org/project/PyAGC"><img src="https://img.shields.io/pypi/v/pyagc.svg" alt="PyPI Version"></a>
-    <a href="https://pyagc.readthedocs.io"><img src="https://img.shields.io/badge/docs-readthedocs-blue.svg" alt="Documentation"></a>
+    <a href="https://pyagc.readthedocs.io"><img src="https://img.shields.io/badge/docs-readthedocs-blue.svg" alt="Docs"></a>
     <a href="https://github.com/Cloudy1225/PyAGC/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
     <a href="https://github.com/Cloudy1225/PyAGC"><img src="https://img.shields.io/github/stars/Cloudy1225/PyAGC.svg?style=social" alt="GitHub Stars"></a>
   </p>
   <p>
     <a href="https://arxiv.org/abs/2602.08519"><strong>Paper</strong></a> | 
-    <a href="https://pyagc.readthedocs.io"><strong>Documentation</strong></a> | 
+    <a href="https://pyagc.readthedocs.io"><strong>Docs</strong></a> | 
     <a href="https://pypi.org/project/pyagc"><strong>PyPI</strong></a> | 
-    <a href="benchmark/results/"><strong>Benchmark Results</strong></a>
+    <a href="benchmark/results/"><strong>Benchmark Results</strong></a> |
+    <a href="AWESOME_AGC.md"><strong>Awesome AGC Papers</strong></a>
   </p>
 </div>
 
@@ -44,6 +45,7 @@ Battle-tested in high-stakes industrial workflows at **Ant Group** (Fraud Detect
   - [Custom Experiments](#custom-experiments)
   - [Scaling to Large Graphs](#scaling-to-large-graphs)
 - [Extending PyAGC](#extending-pyagc)
+- [Awesome AGC Papers](#awesome-agc-papers)
 - [FAQ](#faq)
 - [Citation](#citation)
 - [Contributing](#contributing)
@@ -77,6 +79,8 @@ Current AGC evaluation suffers from four critical limitations that PyAGC is desi
 
 - 🛠️ **Developer-Friendly Design** — Plug-and-play components, YAML-driven configuration, and clean abstractions that make prototyping new methods as easy as swapping a single config line.
 
+- 📚 **Curated Paper Collection** — A companion [Awesome AGC Papers](AWESOME_AGC.md) list covering surveys, benchmarks, and the latest research in attributed graph clustering.
+
 ---
 
 ## Project Structure
@@ -98,6 +102,7 @@ PyAGC/
 │   │   └── logs/                   # Experiment logs per dataset
 │   ├── data/                       # Cached datasets
 │   └── results/                    # Aggregated benchmark results
+├── AWESOME_AGC.md                  # Curated list of AGC papers
 ├── tests/                          # Unit tests
 └── docs/                           # Documentation (Sphinx → ReadTheDocs)
 ```
@@ -193,7 +198,7 @@ PyAGC organizes the landscape of AGC algorithms under a unified **Encode-Cluster
 | | Non-Parametric | Fixed graph filters, adaptive smoothing, Markov diffusion |
 | **Cluster** | Differentiable | Softmax pooling (DMoN, MinCut, Neuromap), Prototype-based (DEC, DinkNet) |
 | | Discrete (Post-hoc) | KMeans, Spectral Clustering, Subspace Clustering |
-| **Optimizer** | Joint | End-to-end: Self-supevised + Clustering- specific loss |
+| **Optimizer** | Joint | End-to-end: Self-supevised + Clustering-specific loss |
 | | Decoupled | Pre-train encoder → Apply discrete clustering |
 
 This decomposition enables plug-and-play experimentation — swap a GCN encoder for a GAT within DAEGC by changing one line in the config file.
@@ -389,7 +394,6 @@ for batch in loader:
 
 ---
 
-
 ## Extending PyAGC
 
 ### Adding a New Encoder
@@ -427,7 +431,7 @@ class MyClusterHead(BaseClusterHead):
         return loss
 
     def cluster(self, z, soft=True):
-      	# Return soft assignment matrix P of shape [N, K]
+        # Return soft assignment matrix P of shape [N, K]
         ...
         return p
 ```
@@ -457,12 +461,31 @@ class MyModel(BaseModel):
 
 ---
 
+## Awesome AGC Papers
+
+We maintain a curated reading list of attributed graph clustering research, covering surveys, benchmarks, and the latest methods — organized to complement the PyAGC benchmark.
+
+📄 **[View the Full Paper List →](AWESOME_AGC.md)**
+
+### Highlights
+
+| Category | Notable Works |
+|:---------|:--------------|
+| **Survey & Benchmark** | [A Survey of Deep Graph Clustering](https://arxiv.org/abs/2211.12875), [DGCBench](https://openreview.net/forum?id=dKVUUZfcW9), [PyAGC (Ours)](https://arxiv.org/abs/2602.08519) |
+| **Non-Parametric** | [SSGC (ICLR'21)](https://openreview.net/forum?id=CYO5T-YjWZV), [SAGSC (AAAI'23)](https://ojs.aaai.org/index.php/AAAI/article/view/25918), [MS2CAG (KDD'25)](https://arxiv.org/abs/2411.11074) |
+| **Deep Decoupled** | [DGI (ICLR'19)](https://arxiv.org/abs/1809.10341), [S3GC (NeurIPS'22)](https://proceedings.neurips.cc/paper_files/paper/2022/hash/15972a9575e0f03bf82f00aebeb40774-Abstract-Conference.html), [MAGI (KDD'24)](https://arxiv.org/abs/2406.14288) |
+| **Deep Joint** | [DMoN (JMLR'23)](https://jmlr.org/papers/v24/20-998.html), [DinkNet (ICML'23)](https://proceedings.mlr.press/v202/liu23v.html), [Neuromap (NeurIPS'24)](https://arxiv.org/abs/2310.01144) |
+
+> 💡 Found a paper that should be listed? Feel free to open a PR to [`AWESOME_AGC.md`](AWESOME_AGC.md)!
+
+---
+
 ## FAQ
 
 <details>
 <summary><b>Q: How do I run experiments on my own graph?</b></summary>
 1. Format your graph as a PyTorch Geometric `Data` object with `x` (node features), `edge_index` (edge list), and optionally `y` (labels for evaluation).
-3. Use any model from `pyagc.models` with your chosen encoder and cluster head.
+2. Use any model from `pyagc.models` with your chosen encoder and cluster head.
 </details>
 
 <details>
@@ -506,7 +529,8 @@ We welcome contributions! Please see our contributing guidelines:
 1. **Bug Reports**: Open an [issue](https://github.com/Cloudy1225/PyAGC/issues) with a minimal reproducible example.
 2. **New Methods**: Submit a PR adding your method under the ECO framework with a `main.py`, `train.conf.yaml`, and unit tests.
 3. **New Datasets**: Submit a PR with a data loader and dataset description.
-4. **Documentation**: Improvements to docs, tutorials, and examples are always appreciated.
+4. **Paper List**: Submit a PR to [`AWESOME_AGC.md`](AWESOME_AGC.md) to add newly published AGC papers.
+5. **Documentation**: Improvements to docs, tutorials, and examples are always appreciated.
 
 ---
 
@@ -530,7 +554,7 @@ We thank Ant Group for supporting the industrial validation of this benchmark.
 ---
 
 <p align="center">
-  <a href="https://github.com/Cloudy1225/PyAGC">GitHub</a> · <a href="https://pypi.org/project/PyAGC">PyPI</a> · <a href="https://pyagc.readthedocs.io">Documentation</a> · <a href="https://arxiv.org/abs/2602.08519">Paper</a>
+  <a href="https://github.com/Cloudy1225/PyAGC">GitHub</a> · <a href="https://pypi.org/project/PyAGC">PyPI</a> · <a href="https://pyagc.readthedocs.io">Docs</a> · <a href="https://arxiv.org/abs/2602.08519">Paper</a> · <a href="AWESOME_AGC.md">Awesome AGC Papers</a>
   <br>
   Made with ❤️ for the Graph ML Community
 </p>
