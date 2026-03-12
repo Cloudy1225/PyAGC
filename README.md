@@ -26,6 +26,14 @@ Battle-tested in high-stakes industrial workflows at **Ant Group** (Fraud Detect
 
 ---
 
+## News
+
+- **[2026-03-02]** Added [Awesome AGC Papers](AWESOME_AGC.md), a curated list of attributed graph clustering papers!
+- **[2026-02-10]** Benchmark paper is now available on [arXiv](https://arxiv.org/abs/2602.08519)!
+- **[2026-02-09]** Initial release of PyAGC!
+
+---
+
 ## Table of Contents
 
 - [Why PyAGC?](#why-pyagc)
