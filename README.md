@@ -8,7 +8,8 @@
     <a href="https://github.com/Cloudy1225/PyAGC"><img src="https://img.shields.io/github/stars/Cloudy1225/PyAGC.svg?style=social" alt="GitHub Stars"></a>
   </p>
   <p>
-    <a href="https://arxiv.org/abs/2602.08519"><strong>Paper</strong></a> | 
+    <a href="https://arxiv.org/abs/2602.08519"><strong>Benchmark Paper</strong></a> |
+    <a href="https://arxiv.org/abs/2603.20829"><strong>Survey Paper</strong></a> |
     <a href="https://pyagc.readthedocs.io"><strong>Docs</strong></a> | 
     <a href="https://pypi.org/project/pyagc"><strong>PyPI</strong></a> | 
     <a href="benchmark/results/"><strong>Benchmark Results</strong></a> |
@@ -28,6 +29,7 @@ Battle-tested in high-stakes industrial workflows at **Ant Group** (Fraud Detect
 
 ## News
 
+- **[2026-03-24]** Survey paper is now available on [arXiv](https://arxiv.org/abs/2603.20829)!
 - **[2026-03-02]** Added [Awesome AGC Papers](AWESOME_AGC.md), a curated list of attributed graph clustering papers!
 - **[2026-02-10]** Benchmark paper is now available on [arXiv](https://arxiv.org/abs/2602.08519)!
 - **[2026-02-09]** Initial release of PyAGC!
@@ -187,7 +189,7 @@ print(f"Modularity: {unsup['Modularity']:.4f} | Conductance: {unsup['Conductance
 
 ## The ECO Framework
 
-PyAGC organizes the landscape of AGC algorithms under a unified **Encode-Cluster-Optimize (ECO)** framework:
+PyAGC organizes the landscape of AGC algorithms under a unified **Encode-Cluster-Optimize (ECO)** framework, formally introduced in our [survey paper](https://arxiv.org/abs/2603.20829):
 
 ```
                     ┌────────────────────────────────────────────────────┐
@@ -206,10 +208,10 @@ PyAGC organizes the landscape of AGC algorithms under a unified **Encode-Cluster
 | | Non-Parametric | Fixed graph filters, adaptive smoothing, Markov diffusion |
 | **Cluster** | Differentiable | Softmax pooling (DMoN, MinCut, Neuromap), Prototype-based (DEC, DinkNet) |
 | | Discrete (Post-hoc) | KMeans, Spectral Clustering, Subspace Clustering |
-| **Optimizer** | Joint | End-to-end: Self-supevised + Clustering-specific loss |
+| **Optimizer** | Joint | End-to-end: Self-supervised + Clustering-specific loss |
 | | Decoupled | Pre-train encoder → Apply discrete clustering |
 
-This decomposition enables plug-and-play experimentation — swap a GCN encoder for a GAT within DAEGC by changing one line in the config file.
+This decomposition enables plug-and-play experimentation — swap a GCN encoder for a GAT within DAEGC by changing one line in the config file. For a comprehensive theoretical analysis of the ECO framework and an industrial perspective on AGC, see our [survey paper](https://arxiv.org/abs/2603.20829).
 
 ---
 
@@ -479,7 +481,7 @@ We maintain a curated reading list of attributed graph clustering research, cove
 
 | Category | Notable Works |
 |:---------|:--------------|
-| **Survey & Benchmark** | [A Survey of Deep Graph Clustering](https://arxiv.org/abs/2211.12875), [DGCBench](https://openreview.net/forum?id=dKVUUZfcW9), [PyAGC (Ours)](https://arxiv.org/abs/2602.08519) |
+| **Survey & Benchmark** | [Beyond the Academic Monoculture (Ours)](https://arxiv.org/abs/2603.20829), [A Survey of Deep Graph Clustering](https://arxiv.org/abs/2211.12875), [DGCBench](https://openreview.net/forum?id=dKVUUZfcW9), [PyAGC Benchmark (Ours)](https://arxiv.org/abs/2602.08519) |
 | **Non-Parametric** | [SSGC (ICLR'21)](https://openreview.net/forum?id=CYO5T-YjWZV), [SAGSC (AAAI'23)](https://ojs.aaai.org/index.php/AAAI/article/view/25918), [MS2CAG (KDD'25)](https://arxiv.org/abs/2411.11074) |
 | **Deep Decoupled** | [DGI (ICLR'19)](https://arxiv.org/abs/1809.10341), [S3GC (NeurIPS'22)](https://proceedings.neurips.cc/paper_files/paper/2022/hash/15972a9575e0f03bf82f00aebeb40774-Abstract-Conference.html), [MAGI (KDD'24)](https://arxiv.org/abs/2406.14288) |
 | **Deep Joint** | [DMoN (JMLR'23)](https://jmlr.org/papers/v24/20-998.html), [DinkNet (ICML'23)](https://proceedings.mlr.press/v202/liu23v.html), [Neuromap (NeurIPS'24)](https://arxiv.org/abs/2310.01144) |
@@ -515,7 +517,7 @@ All benchmark experiments were conducted on a single NVIDIA Tesla V100 (32GB). F
 
 ## Citation
 
-If you find PyAGC useful in your research, please cite our paper:
+If you find PyAGC useful in your research, please cite our papers:
 
 ```bibtex
 @article{liu2026bridging,
@@ -523,6 +525,15 @@ If you find PyAGC useful in your research, please cite our paper:
   author={Yunhui Liu and Pengyu Qiu and Yu Xing and Yongchao Liu and Peng Du and Chuntao Hong and Jiajun Zheng and Tao Zheng and Tieke He},
   year={2026},
   eprint={2602.08519},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG}
+}
+
+@article{liu2026beyond,
+  title={Beyond the Academic Monoculture: A Unified Framework and Industrial Perspective for Attributed Graph Clustering},
+  author={Yunhui Liu and Yue Liu and Yongchao Liu and Tao Zheng and Stan Z. Li and Xinwang Liu and Tieke He},
+  year={2026},
+  eprint={2603.20829},
   archivePrefix={arXiv},
   primaryClass={cs.LG}
 }
@@ -562,7 +573,7 @@ We thank Ant Group for supporting the industrial validation of this benchmark.
 ---
 
 <p align="center">
-  <a href="https://github.com/Cloudy1225/PyAGC">GitHub</a> · <a href="https://pypi.org/project/PyAGC">PyPI</a> · <a href="https://pyagc.readthedocs.io">Docs</a> · <a href="https://arxiv.org/abs/2602.08519">Paper</a> · <a href="AWESOME_AGC.md">Awesome AGC Papers</a>
+  <a href="https://github.com/Cloudy1225/PyAGC">GitHub</a> · <a href="https://pypi.org/project/PyAGC">PyPI</a> · <a href="https://pyagc.readthedocs.io">Docs</a> · <a href="https://arxiv.org/abs/2602.08519">Benchmark Paper</a> · <a href="https://arxiv.org/abs/2603.20829">Survey Paper</a> · <a href="AWESOME_AGC.md">Awesome AGC Papers</a>
   <br>
   Made with ❤️ for the Graph ML Community
 </p>

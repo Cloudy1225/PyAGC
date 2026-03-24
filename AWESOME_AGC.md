@@ -1,6 +1,6 @@
 # Awesome Attributed Graph Clustering (AGC) Papers
 
-A curated list of papers on Attributed Graph Clustering (AGC). This list accompanies the survey paper **"Attributed Graph Clustering: A Unified Framework, Comprehensive Review, and Industrial Perspective"** and the benchmark paper **"Bridging Academia and Industry: A Comprehensive Benchmark for Attributed Graph Clustering"**.
+A curated list of papers on Attributed Graph Clustering (AGC). This list accompanies the survey paper **[Beyond the Academic Monoculture: A Unified Framework and Industrial Perspective for Attributed Graph Clustering](https://arxiv.org/abs/2603.20829)** and the benchmark paper **[Bridging Academia and Industry: A Comprehensive Benchmark for Attributed Graph Clustering](https://arxiv.org/abs/2602.08519)**.
 
 ---
 
@@ -43,6 +43,7 @@ A curated list of papers on Attributed Graph Clustering (AGC). This list accompa
 | 2025 | NeurIPS | [DGCBench: A Deep Graph Clustering Benchmark](https://openreview.net/forum?id=dKVUUZfcW9) | [Code](https://github.com/Marigoldwu/PyDGC) |
 | 2025 | TPAMI | [Deep Temporal Graph Clustering: A Comprehensive Benchmark and Datasets](https://arxiv.org/abs/2601.12903) | [Code](https://github.com/MGitHubL/BenchTGC) |
 | 2026 | arXiv | [Bridging Academia and Industry: A Comprehensive Benchmark for Attributed Graph Clustering](https://arxiv.org/abs/2602.08519) | [Code](https://github.com/Cloudy1225/PyAGC) |
+| 2026 | arXiv | [Beyond the Academic Monoculture: A Unified Framework and Industrial Perspective for Attributed Graph Clustering](https://arxiv.org/abs/2603.20829) | [Code](https://github.com/Cloudy1225/PyAGC) |
 
 ---
 
@@ -455,6 +456,15 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 If you find this list useful, please consider citing our survey and benchmark papers:
 
 ```bibtex
+@article{liu2026beyond,
+  title={Beyond the Academic Monoculture: A Unified Framework and Industrial Perspective for Attributed Graph Clustering},
+  author={Yunhui Liu and Yue Liu and Yongchao Liu and Tao Zheng and Stan Z. Li and Xinwang Liu and Tieke He},
+  year={2026},
+  eprint={2603.20829},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG}
+}
+
 @article{liu2026bridging,
   title={Bridging Academia and Industry: A Comprehensive Benchmark for Attributed Graph Clustering},
   author={Yunhui Liu and Pengyu Qiu and Yu Xing and Yongchao Liu and Peng Du and Chuntao Hong and Jiajun Zheng and Tao Zheng and Tieke He},
