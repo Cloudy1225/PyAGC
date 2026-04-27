@@ -1,0 +1,129 @@
+default:
+  # Training hyperparameters
+  lr: 0.001
+  wd: 0.0
+  epochs: 200
+  patience: 50
+
+  # Checkpoint settings
+  save_every: null  # Save checkpoint every N epochs (null = disabled, only save best/last)
+  save_every_batch: null  # Save checkpoint every N batches (null = disabled, for large datasets)
+
+  # Training mode configuration
+  mini_batch: false  # Whether to use mini-batch training
+
+  # Evaluation metrics
+  label_metrics: ['NMI', 'ARI', 'ACC', 'F1', 'Homo', 'Comp']
+  struct_metrics: ['Mod', 'Cond']
+
+  # Tabular encoder configuration
+  tabular_channels: 128
+  torch_frame_model: resnet
+  tf_channels: 128
+  tf_num_layers: 2
+  tf_dropout: 0.0
+
+  # GNN architecture
+  gnn_type: gcn  # Options: gcn, sage, gat, gatv2, gin
+
+  # Model architecture
+  hidden_channels: 512
+  num_layers: 2
+  dropout: 0.0
+  act: prelu
+  act_last: true
+  norm: null  # Options: null/none, batch_norm, layer_norm
+  residual: false
+  pre_linear: false
+  jk: null  # Options: null, last, cat, max, lstm
+
+  # GNN-specific parameters
+  # GCN
+  add_self_loops: null
+  normalize: true
+  improved: false
+  cached: true  # transductive
+
+  # GraphSAGE
+  aggr: mean  # Options: mean, max, sum
+  project: false
+
+  # GAT/GATv2
+  heads: 1
+  concat: true
+  negative_slope: 0.2
+
+  # GIN
+  train_eps: false
+
+  # Mini-batch training parameters
+  fan_out: 10
+  batch_size: 32768
+  num_workers: 8
+
+  # Inference configuration
+  force_full_batch_inference: false  # Try full-batch inference even if mini_batch=true
+  allow_cpu_fallback: true  # Allow fallback to CPU full-batch if GPU OOM
+  infer_batch_size: 256  # If null, use batch_size
+  infer_fan_out: -1  # -1 means sample all neighbors
+
+  # K-Means clustering parameters
+  kmeans_backend: torch  # Options: torch, triton, sklearn
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  normalize_embeddings: true  # Whether to normalize embeddings before clustering
+
+# ============================================================================
+# Dataset-specific configurations
+# ============================================================================
+
+HM:
+  mini_batch: false
+  gnn_type: gcn
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  epochs: 100
+  hidden_channels: 64
+  num_layers: 1
+  norm: null
+  act_last: false
+  tabular_channels: 128
+  tf_channels: 128
+  tf_num_layers: 2
+  tf_dropout: 0.0
+
+Pokec:
+  mini_batch: true
+  gnn_type: gcn
+  epochs: 10
+  hidden_channels: 256
+  num_layers: 1
+  batch_size: 16384
+  infer_batch_size: 16384
+  infer_fan_out: 10  # OOM when infer_fan_out = -1 and infer_batch_size = 256
+  force_full_batch_inference: true
+  allow_cpu_fallback: true
+  norm: batch_norm
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  tabular_channels: 128
+  tf_channels: 128
+  tf_num_layers: 2
+
+WebTopic:
+  mini_batch: true
+  gnn_type: sage
+  epochs: 10
+  hidden_channels: 512
+  num_layers: 1
+  batch_size: 16384
+  infer_batch_size: 16384
+  infer_fan_out: 10  # OOM when infer_fan_out = -1 and infer_batch_size = 256
+  force_full_batch_inference: true
+  allow_cpu_fallback: false
+  norm: null
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  tabular_channels: 128
+  tf_channels: 128
+  tf_num_layers: 2

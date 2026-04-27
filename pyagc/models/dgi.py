@@ -29,7 +29,7 @@ def default_corruption(x: Tensor, edge_index: Tensor, *args, **kwargs) -> Tuple[
     Returns:
         Tuple of corrupted features and original edge_index.
     """
-    return x[torch.randperm(x.size(0))], edge_index
+    return x[torch.randperm(len(x))], edge_index
 
 
 def default_summary(z: Tensor, *args, **kwargs) -> Tensor:
@@ -129,7 +129,7 @@ class DGI(TrainableModel):
         """Returns the latent space for the input arguments, their
         corruptions and their summary representation.
         """
-        pos_z = self.encoder(*args, **kwargs)
+        pos_z = self.embed(*args, **kwargs)
 
         cor = self.corruption(*args, **kwargs)
         cor = cor if isinstance(cor, tuple) else (cor,)
@@ -138,7 +138,7 @@ class DGI(TrainableModel):
         for key, value in zip(kwargs.keys(), cor[len(args):]):
             cor_kwargs[key] = value
 
-        neg_z = self.encoder(*cor_args, **cor_kwargs)
+        neg_z = self.embed(*cor_args, **cor_kwargs)
 
         summary = self.summary(pos_z, *args, **kwargs)
 

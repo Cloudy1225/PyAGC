@@ -3,6 +3,7 @@ from .tuned_gnn import TunedGNN, TunedGCN, TunedGraphSAGE, TunedGIN, TunedGAT, T
 from .sgformer import SGFormer
 from .polynormer import Polynormer
 from .h2gcn import H2GCNConv, H2GCN
+from .tabencoder import TabularEncoder, TabularGraphEncoder
 
 __all__ = [
     'BasicGNN',
@@ -23,5 +24,7 @@ __all__ = [
     'Polynormer',
     'H2GCNConv',
     'H2GCN',
+    'TabularEncoder',
+    'TabularGraphEncoder',
     'create_tuned_gnn',
 ]

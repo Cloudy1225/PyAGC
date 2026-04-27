@@ -9,6 +9,8 @@ Dataset Loading
 
 .. autofunction:: pyagc.data.get_dataset
 
+.. autofunction:: pyagc.data.get_tabular_graphland_dataset
+
 Benchmark Datasets
 ------------------
 
@@ -305,7 +307,12 @@ If you need a PyG Data object for compatibility:
 Working with Tabular Features
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-GraphLand datasets (HM, Pokec, WebTopic) have tabular features:
+GraphLand datasets (HM, Pokec, WebTopic) provide **tabular node features**.
+
+Two usage patterns are supported:
+
+Using Dense Tensor Features
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -317,6 +324,32 @@ GraphLand datasets (HM, Pokec, WebTopic) have tabular features:
 
     # These features may require preprocessing (normalization, encoding)
     # depending on your clustering algorithm
+
+Using TensorFrame Features
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+    from pyagc.data import get_tabular_graphland_dataset
+
+    data = get_tabular_graphland_dataset('HM', root='./data')
+
+    x = data.x  # torch_frame.TensorFrame
+
+    print(x)
+    print(data.tf_col_stats)  # column-wise statistics
+
+Advantages of TensorFrame:
+
+- Preserves **feature semantics** (categorical vs numerical)
+- Avoids lossy preprocessing
+- Enables **learnable feature encoders**
+- Better suited for **heterogeneous tabular graphs**
+
+.. tip::
+
+   When using TensorFrame inputs, pair with encoders from
+   :mod:`pyagc.encoders.tabencoder` or custom torch-frame models.
 
 Loading Other PyG Datasets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -469,7 +502,57 @@ PyAGC includes the **GraphLand** benchmark datasets (HM, Pokec, WebTopic) featur
 - **Heterophilous structures** (low homophily)
 - **Industrial-scale complexity** (millions of nodes)
 
-.. automodule:: pyagc.data.graphland
+Two loading paradigms are provided:
+
+Standard Tensor Features
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Using :func:`pyagc.data.get_dataset`:
+
+- Node features are returned as **dense tensors** (:math:`\mathbf{X} \in \mathbb{R}^{N \times F}`)
+- Tabular features are **preprocessed (encoded / normalized)** beforehand
+- Compatible with traditional GNN pipelines
+
+.. code-block:: python
+
+    x, edge_index, y = get_dataset('HM', root='./data')
+
+TensorFrame-based Features
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Using :func:`pyagc.data.get_tabular_graphland_dataset`:
+
+- Node features are stored as :class:`torch_frame.TensorFrame`
+- **Semantic types are preserved** (categorical, numerical, etc.)
+- Feature preprocessing is **deferred to model-side encoders**
+- Enables advanced tabular learning (e.g., feature-wise embeddings)
+
+.. code-block:: python
+
+    from pyagc.data import get_tabular_graphland_dataset
+
+    data = get_tabular_graphland_dataset('HM', root='./data')
+
+    print(type(data.x))  # torch_frame.TensorFrame
+    print(data.edge_index.shape)
+    print(data.y.shape)
+
+    # TensorFrame statistics (computed on training nodes)
+    print(data.tf_col_stats)
+
+.. note::
+
+   The TensorFrame-based pipeline is designed for integration with
+   **torch-frame encoders**, allowing:
+
+   - automatic handling of heterogeneous feature types
+   - missing value processing
+   - feature-wise embedding learning
+
+Dataset Class
+~~~~~~~~~~~~~~
+
+.. autoclass:: pyagc.data.GraphLandTensorFrameDataset
    :members:
    :undoc-members:
 

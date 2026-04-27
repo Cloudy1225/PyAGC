@@ -69,6 +69,7 @@ intersphinx_mapping = {
     'pandas': ('https://pandas.pydata.org/docs/', None),
     'torch': ('https://pytorch.org/docs/stable/', None),
     'torch_geometric': ('https://pytorch-geometric.readthedocs.io/en/latest/', None),
+    'torch_frame': ('https://pytorch-frame.readthedocs.io/en/latest/', None),
 }
 
 typehints_use_rtype = False

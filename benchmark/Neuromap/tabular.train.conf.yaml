@@ -1,0 +1,111 @@
+default:
+  # Training hyperparameters
+  lr: 0.001
+  wd: 0.00001
+  epochs: 1000
+  patience: 50
+
+  # Checkpoint settings
+  save_runs: null
+  save_every: null  # Save checkpoint every N epochs (null = disabled, only save best/last)
+
+  # Training mode configuration
+  mini_batch: false  # Neuromap does not support mini-batch training
+
+  # Evaluation metrics
+  label_metrics: ['NMI', 'ARI', 'ACC', 'F1', 'Homo', 'Comp']
+  struct_metrics: ['Mod', 'Cond']
+
+  # Tabular encoder configuration
+  tabular_channels: 128
+  torch_frame_model: resnet
+  tf_channels: 128
+  tf_num_layers: 2
+  tf_dropout: 0.0
+
+  # GNN architecture
+  gnn_type: gcn  # Options: gcn, sage, gat, gatv2, gin
+
+  # Model architecture
+  hidden_channels: 512
+  num_layers: 2
+  dropout: 0.5
+  act: selu
+  act_first: false
+  act_last: false
+  norm: null  # Options: null/none, batch_norm, layer_norm
+  residual: false
+  pre_linear: false
+  jk: null  # Options: null, last, cat, max, lstm
+
+  # GNN-specific parameters
+  # GCN
+  add_self_loops: null
+  normalize: true
+  improved: false
+  cached: true  # transductive
+
+  # GraphSAGE
+  aggr: mean  # Options: mean, max, sum
+  project: false
+
+  # GAT/GATv2
+  heads: 1
+  concat: true
+  negative_slope: 0.2
+
+  # GIN
+  train_eps: false
+  bias: true
+
+  # Neuromap-specific parameters
+  lam: 1.0  # Regularization coefficient for collapse loss
+  alpha: 0.15  # Teleportation probability for PageRank
+  n_iters: 100  # Power iteration steps for stationary distribution
+
+  # Inference parameters (for fallback mini-batch inference if OOM)
+  infer_batch_size: 1024
+  infer_fan_out: -1
+  num_workers: 0
+
+# ============================================================================
+# Dataset-specific configurations
+# ============================================================================
+
+HM:
+  epochs: 1000
+  hidden_channels: 64
+  num_layers: 2
+  norm: null
+  lam: 1.0
+  tabular_channels: 128
+  tf_channels: 128
+  tf_num_layers: 2
+
+Pokec:
+  # Neuromap does not support mini-batch training
+  # Will use full-batch with fallback to mini-batch inference if OOM
+  mini_batch: false
+  gnn_type: gcn
+  epochs: 1000
+  hidden_channels: 32
+  num_layers: 2
+  norm: batch_norm
+  lam: 1.0
+  tabular_channels: 16
+  tf_channels: 16
+  tf_num_layers: 2
+
+WebTopic:
+  # Neuromap does not support mini-batch training
+  # Will use full-batch with fallback to mini-batch inference if OOM
+  mini_batch: false
+  gnn_type: gcn
+  epochs: 1000
+  hidden_channels: 64
+  num_layers: 2
+  norm: batch_norm
+  lam: 1.0
+  tabular_channels: 128
+  tf_channels: 128
+  tf_num_layers: 2

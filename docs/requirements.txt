@@ -3,6 +3,7 @@ https://download.pytorch.org/whl/cpu/torch-2.8.0%2Bcpu-cp310-cp310-manylinux_2_2
 
 # CPU-only PyG
 torch-geometric>=2.7.0
+pytorch-frame
 
 numpy>=1.19.5
 scipy
