@@ -76,6 +76,9 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue | Title | Code |
 | ---- | ----- | ----- | ---- |
+| 2026 | WWW   | [Structure-Semantic Synergized Deep Contrastive Graph Clustering](https://dl.acm.org/doi/10.1145/3774904.3792559) | — |
+| 2026 | WWW   | [From Representation to Clusters: A Contrastive Learning Approach for Attributed Hypergraph Clustering](https://arxiv.org/abs/2603.09370) | [Code](https://github.com/nilics/CAHC) |
+| 2026 | WWW   | [A Unified Graph Clustering Network](https://dl.acm.org/doi/10.1145/3774904.3792266) | —    |
 | 2026 | ICLR | [Compactness and Consistency: A Conjoint Framework for Deep Graph Clustering](https://openreview.net/forum?id=9jdQLmPUHW) | [Code](https://github.com/juweipku/CoCo) |
 | 2025 | AAAI | [One Node One Model: Featuring the Missing-Half for Graph Clustering](https://arxiv.org/abs/2412.09902) | [Code](https://github.com/XieXuanting/FPGC) |
 | 2025 | TNNLS | [SynC: Synergistic Boosting of Structure and Representation for Deep Graph Clustering](https://ieeexplore.ieee.org/document/11314181) | [Code](https://github.com/Marigoldwu/SynC) |
@@ -142,6 +145,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue | Title | Code |
 | ---- | ----- | ----- | ---- |
+| 2026 | WWW   | [Weighted Graph Clustering via Scale Contraction and Graph Structure Learning](https://arxiv.org/abs/2601.17307) | [Code](https://github.com/HaobingLiu/CeeGCN) |
 | 2026 | TPAMI | [ASIL: Augmented Structural Information Learning for Deep Graph Clustering in Hyperbolic Space](https://arxiv.org/abs/2504.09970) | [Code](https://github.com/RiemannGraph/DSE_clustering) |
 | 2025 | TPAMI | [Clustering Diffusion Model With Frequency-Signal Modulation for Variational Graph Autoencoders](https://ieeexplore.ieee.org/document/11180140) | [Code](https://github.com/Roiko97/FVD) |
 | 2025 | TPAMI | [Graph Prompt Clustering](https://ieeexplore.ieee.org/document/10935718) | [Code](https://github.com/ManshengChen/Code-for-GPC-master) |
@@ -233,6 +237,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue | Title | Code |
 | ---- | ----- | ----- | ---- |
+| 2026 | WWW   | [From Representation to Clusters: A Contrastive Learning Approach for Attributed Hypergraph Clustering](https://arxiv.org/abs/2603.09370) | [Code](https://github.com/nilics/CAHC) |
 | 2025 | SIGMOD | [On Graph Representation for Attributed Hypergraph Clustering](https://dl.acm.org/doi/10.1145/3709741) | [Code](https://github.com/ForPaperSubmissions/Attributed_Hypergraph_Representation_for_Clustering_Code) |
 | 2025 | ICCV | [Hypergraph Clustering Network with Partial Attribute Imputation](https://openaccess.thecvf.com/content/ICCV2025/html/Wang_Hypergraph_Clustering_Network_with_Partial_Attribute_Imputation_ICCV_2025_paper.html) | — |
 | 2025 | IJCAI | [A Simple yet Effective Hypergraph Clustering Network](https://www.ijcai.org/proceedings/2025/0707) | — |
@@ -248,6 +253,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue | Title | Code |
 | ---- | ----- | ----- | ---- |
+| 2026 | WWW   | [Node Role-Guided LLMs for Dynamic Graph Clustering](https://arxiv.org/abs/2603.13799) | [Code](https://github.com/Clearloveyuan/DyG-RoLLM) |
 | 2025 | TPAMI | [Deep Temporal Graph Clustering: A Comprehensive Benchmark and Datasets](https://arxiv.org/abs/2601.12903) | [Code](https://github.com/MGitHubL/BenchTGC) |
 | 2024 | ICLR | [Deep Temporal Graph Clustering](https://arxiv.org/abs/2305.10738) | [Code](https://github.com/MGitHubL/TGC) |
 | 2022 | WWW | [CGC: Contrastive Graph Clustering for Community Detection and Tracking](https://arxiv.org/abs/2204.08504) | [Code](https://github.com/NamyongPark/CGC-Data) |
@@ -301,6 +307,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue | Title | Code |
 | ---- | ----- | ----- | ---- |
+| 2026 | WWW   | [Node Role-Guided LLMs for Dynamic Graph Clustering](https://arxiv.org/abs/2603.13799) | [Code](https://github.com/Clearloveyuan/DyG-RoLLM) |
 | 2025 | ACL Findings | [MARK: Multi-agent Collaboration with Ranking Guidance for Text-attributed Graph Clustering](https://aclanthology.org/2025.findings-acl.314/) | [Code](https://github.com/fuyw-aisw/MARK) |
 | 2024 | LoG | [Large Language Model Guided Graph Clustering](https://openreview.net/forum?id=CLyhlb5DG5) | — |
 
@@ -312,6 +319,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue | Title | Code |
 | ---- | ----- | ----- | ---- |
+| 2026 | WWW   | [FedCND: Federated Graph-Level Clustering under Inter-Client Cluster Number Discrepancy](https://dl.acm.org/doi/10.1145/3774904.3792325) | —    |
 | 2026 | ICLR | [Federated Graph-Level Clustering Network with Dual Knowledge Separation](https://openreview.net/forum?id=FwKFjBX0PK) | — |
 | 2025 | ICML | [Federated Node-Level Clustering Network with Cross-Subgraph Link Mending](https://openreview.net/forum?id=38Nh0TebXZ) | — |
 | 2025 | AAAI | [Federated Graph-Level Clustering Network](https://ojs.aaai.org/index.php/AAAI/article/view/34077) | — |
