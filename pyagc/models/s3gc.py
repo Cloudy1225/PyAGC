@@ -8,7 +8,7 @@ from torch import Tensor
 from torch.utils.data import DataLoader
 from torch_geometric.index import index2ptr
 from torch_geometric.nn.inits import reset
-from torch_geometric.typing import WITH_PYG_LIB, WITH_TORCH_CLUSTER
+from torch_geometric.typing import WITH_PYG_LIB
 from torch_geometric.utils import degree, add_remaining_self_loops, sort_edge_index
 from torch_geometric.utils.num_nodes import maybe_num_nodes
 
@@ -389,18 +389,10 @@ class S3GC(TrainableModel):
     ):
         super().__init__()
 
-        if WITH_PYG_LIB and p == 1.0 and q == 1.0:
-            self.random_walk_fn = torch.ops.pyg.random_walk
-        elif WITH_TORCH_CLUSTER:
-            self.random_walk_fn = torch.ops.torch_cluster.random_walk
-        else:
-            if p == 1.0 and q == 1.0:
-                raise ImportError(f"'{self.__class__.__name__}' "
-                                  f"requires either the 'pyg-lib' or "
-                                  f"'torch-cluster' package")
-            else:
-                raise ImportError(f"'{self.__class__.__name__}' "
-                                  f"requires the 'torch-cluster' package")
+        if not WITH_PYG_LIB:
+            raise ImportError(f"'{self.__class__.__name__}' "
+                              f"requires 'pyg-lib>=0.6.0'")
+        self.random_walk_fn = torch.ops.pyg.random_walk
 
         if walk_length < context_size:
             raise ValueError(
