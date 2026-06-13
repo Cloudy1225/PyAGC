@@ -1,5 +1,7 @@
-[tool.setuptools]
-packages = ["pyagc"]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pyagc*"]
+exclude = ["tests*", "benchmark*", "docs*"]
 
 [build-system]
 requires = ["setuptools", "wheel"]
@@ -7,7 +9,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyagc"
-version = "1.1.0"
+version = "1.1.1"
 description = "PyAGC: A PyTorch library for Attributed Graph Clustering."
 readme = "README.md"
 authors=[

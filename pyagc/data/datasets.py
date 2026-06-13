@@ -3,7 +3,7 @@ import os
 import torch_geometric.transforms as T
 from ogb.nodeproppred import PygNodePropPredDataset
 from torch_geometric.data import Data
-from torch_geometric.datasets import Planetoid, CoraFull, Amazon, Coauthor, Flickr, Reddit2
+from torch_geometric.datasets import Planetoid, CoraFull, Amazon, Coauthor, Flickr, Reddit2, WikiCS
 from torch_geometric.utils import to_undirected, add_remaining_self_loops, subgraph
 import psutil
 
@@ -30,15 +30,15 @@ def get_dataset(name: str, root: str, return_splits=False):
 
     Args:
         name (str): The name of the dataset to load. Supported options include:
-            :obj:`['cora', 'citeseer', 'pubmed', 'corafull', 'photo', 'computers',
-            'cs', 'physics', 'flickr', 'reddit', 'reddit2', 'ogbn-arxiv', 'arxiv',
-            'ogbn-mag', 'mag', 'ogbn-products', 'products', 'ogbn-papers100M',
-            'papers100m', 'hm-categories', 'hm', 'pokec-regions', 'pokec',
-            'web-topics', 'webtopic']`.
+            ['cora', 'citeseer', 'pubmed', 'corafull', 'photo', 'computers',
+            'cs', 'physics', 'flickr', 'reddit', 'reddit2', 'wikics', 'wiki-cs',
+            'wiki_cs', 'ogbn-arxiv', 'arxiv', 'ogbn-mag', 'mag',
+            'ogbn-products', 'products', 'ogbn-papers100M', 'papers100m',
+            'hm-categories', 'hm', 'pokec-regions', 'pokec',
+            'web-topics', 'webtopic'].
         root (str): The root directory where the dataset should be stored.
-        return_splits (bool, optional): If set to :obj:`True`, returns node-level
-            split indices (train/valid/test) along with the features and edges.
-            (default: :obj:`False`)
+        return_splits (bool, optional): If True, also returns train/valid/test
+            node indices. For WikiCS, the first predefined split is used by default.
 
     Returns:
         (Tuple): Depending on :attr:`return_splits`:
@@ -70,6 +70,12 @@ def get_dataset(name: str, root: str, return_splits=False):
         dataset = CoraFull(f'{root}/{name}', transform=T.NormalizeFeatures())
     elif name in ['photo', 'computers']:
         dataset = Amazon(root=root, name=name, transform=T.NormalizeFeatures())
+    elif name in ['wikics', 'wiki-cs', 'wiki_cs']:
+        dataset = WikiCS(
+            root=f'{root}/wikics',
+            transform=T.NormalizeFeatures(),
+            is_undirected=True,
+        )
     elif name in ['cs', 'physics']:
         dataset = Coauthor(root=root, name=name, transform=T.NormalizeFeatures())
     elif name in ['flickr']:
@@ -79,7 +85,7 @@ def get_dataset(name: str, root: str, return_splits=False):
         dataset = Reddit2(root=f'{root}/{name}', transform=T.NormalizeFeatures())
     elif name in ['ogbn-arxiv', 'arxiv']:
         dataset = PygNodePropPredDataset(root=root, name='ogbn-arxiv')
-    elif name in ['mag']:
+    elif name in ['ogbn-mag', 'mag']:
         dataset = PygNodePropPredDataset(root=root, name='ogbn-mag')
         rel_data = dataset[0]
         # We are only interested in paper <-> paper relations.
@@ -116,9 +122,25 @@ def get_dataset(name: str, root: str, return_splits=False):
                 train_idx, valid_idx, test_idx = split_idx['train'], split_idx['valid'], split_idx['test']
         else:
             # For standard datasets using boolean masks.
-            train_idx = data.train_mask.nonzero(as_tuple=False).view(-1)
-            valid_idx = data.val_mask.nonzero(as_tuple=False).view(-1)
-            test_idx = data.test_mask.nonzero(as_tuple=False).view(-1)
+            # WikiCS has multiple splits:
+            # train_mask / val_mask are usually [num_nodes, num_splits].
+            # We directly use the first split by default.
+            if data.train_mask.dim() == 2:
+                train_mask = data.train_mask[:, 0]
+                valid_mask = data.val_mask[:, 0]
+
+                if data.test_mask.dim() == 2:
+                    test_mask = data.test_mask[:, 0]
+                else:
+                    test_mask = data.test_mask
+            else:
+                train_mask = data.train_mask
+                valid_mask = data.val_mask
+                test_mask = data.test_mask
+
+            train_idx = train_mask.nonzero(as_tuple=False).view(-1)
+            valid_idx = valid_mask.nonzero(as_tuple=False).view(-1)
+            test_idx = test_mask.nonzero(as_tuple=False).view(-1)
         return data.x, data.edge_index, data.y, train_idx, valid_idx, test_idx
     else:
         return data.x, data.edge_index, data.y
