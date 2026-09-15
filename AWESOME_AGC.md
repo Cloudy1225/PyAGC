@@ -76,6 +76,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue                 | Title                                                        | Code                                                         |
 | ---- | --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 2026 | VLDB  | [Breaking Structural Isolation: Scalable Graph Clustering via Community-Aware Sampling and Structural Entropy](https://arxiv.org/abs/2607.05469) | [Code](https://github.com/SELGroup/SCISE) |
 | 2026 | WWW                   | [Structure-Semantic Synergized Deep Contrastive Graph Clustering](https://dl.acm.org/doi/10.1145/3774904.3792559) | —                                                            |
 | 2026 | WWW                   | [From Representation to Clusters: A Contrastive Learning Approach for Attributed Hypergraph Clustering](https://arxiv.org/abs/2603.09370) | [Code](https://github.com/nilics/CAHC)                       |
 | 2026 | WWW                   | [A Unified Graph Clustering Network](https://dl.acm.org/doi/10.1145/3774904.3792266) | —                                                            |
@@ -145,6 +146,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue   | Title                                                        | Code                                                         |
 | ---- | ------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 2026 | TMM     | [Neighborhood Consensus-guided Reinforcement Learning for Scalable Deep Graph Clustering](https://ieeexplore.ieee.org/abstract/document/11673281) | [Code](https://github.com/shallowdreamoon/RLDGC)             |
 | 2026 | ICML    | [Discriminative Attribute Graph Clustering Through Topology-Guided Contrastive Learning](https://openreview.net/forum?id=nn5hJFwMPu) | —                                                            |
 | 2026 | WWW     | [Weighted Graph Clustering via Scale Contraction and Graph Structure Learning](https://arxiv.org/abs/2601.17307) | [Code](https://github.com/HaobingLiu/CeeGCN)                 |
 | 2026 | TPAMI   | [ASIL: Augmented Structural Information Learning for Deep Graph Clustering in Hyperbolic Space](https://arxiv.org/abs/2504.09970) | [Code](https://github.com/RiemannGraph/DSE_clustering)       |
@@ -178,6 +180,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue     | Title                                                        | Code                                              |
 | ---- | --------- | ------------------------------------------------------------ | ------------------------------------------------- |
+| 2026 | TKDE      | [Synergistic Dual Proxies: Enhancing Cohesion and Separability in Deep Graph Clustering](https://ieeexplore.ieee.org/abstract/document/11660737) | [Code](https://github.com/yxdongxjtu/dp_net_tkde) |
 | 2025 | WWW       | [Diffusion-based Graph-agnostic Clustering](https://dl.acm.org/doi/10.1145/3696410.3714652) | [Code](https://github.com/kkkkk001/DGAC)          |
 | 2025 | NeurIPS   | [Hybrid-Collaborative Augmentation and Contrastive Sample Adaptive-Differential Awareness for Robust Attributed Graph Clustering](https://arxiv.org/abs/2510.02731) | [Code](https://github.com/TianxiangZhao0474/RAGC) |
 | 2024 | TKDD      | [Towards Faster Deep Graph Clustering via Efficient Graph Auto-Encoder](https://dl.acm.org/doi/abs/10.1145/3674983) | [Code](https://github.com/Marigoldwu/FastDGC)     |
