@@ -5,10 +5,11 @@
     <a href="https://pypi.org/project/PyAGC"><img src="https://img.shields.io/pypi/v/pyagc.svg" alt="PyPI Version"></a>
     <a href="https://pyagc.readthedocs.io"><img src="https://img.shields.io/badge/docs-readthedocs-blue.svg" alt="Docs"></a>
     <a href="https://github.com/Cloudy1225/PyAGC/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
+    <a href="https://arxiv.org/abs/2602.08519"><img src="https://img.shields.io/badge/NeurIPS_2026-Evaluations_%26_Datasets-B31B1B" alt="NeurIPS 2026 Evaluations & Datasets"></a>
     <a href="https://github.com/Cloudy1225/PyAGC"><img src="https://img.shields.io/github/stars/Cloudy1225/PyAGC.svg?style=social" alt="GitHub Stars"></a>
   </p>
   <p>
-    <a href="https://arxiv.org/abs/2602.08519"><strong>Benchmark Paper</strong></a> |
+    <a href="https://arxiv.org/abs/2602.08519"><strong>Benchmark Paper (NeurIPS 2026)</strong></a> |
     <a href="https://arxiv.org/abs/2603.20829"><strong>Survey Paper</strong></a> |
     <a href="https://pyagc.readthedocs.io"><strong>Docs</strong></a> | 
     <a href="https://pypi.org/project/pyagc"><strong>PyPI</strong></a> | 
@@ -29,6 +30,7 @@ Battle-tested in high-stakes industrial workflows at **Ant Group** (Fraud Detect
 
 ## News
 
+- **[2026-09-25]** Benchmark paper accepted to the **NeurIPS 2026 Evaluations & Datasets Track**! [[arXiv]](https://arxiv.org/abs/2602.08519)
 - **[2026-03-24]** Survey paper is now available on [arXiv](https://arxiv.org/abs/2603.20829)!
 - **[2026-03-02]** Added [Awesome AGC Papers](AWESOME_AGC.md), a curated list of attributed graph clustering papers!
 - **[2026-02-10]** Benchmark paper is now available on [arXiv](https://arxiv.org/abs/2602.08519)!
@@ -481,7 +483,7 @@ We maintain a curated reading list of attributed graph clustering research, cove
 
 | Category | Notable Works |
 |:---------|:--------------|
-| **Survey & Benchmark** | [Beyond the Academic Monoculture (Ours)](https://arxiv.org/abs/2603.20829), [A Survey of Deep Graph Clustering](https://arxiv.org/abs/2211.12875), [DGCBench](https://openreview.net/forum?id=dKVUUZfcW9), [PyAGC Benchmark (Ours)](https://arxiv.org/abs/2602.08519) |
+| **Survey & Benchmark** | [Beyond the Academic Monoculture (Ours)](https://arxiv.org/abs/2603.20829), [A Survey of Deep Graph Clustering](https://arxiv.org/abs/2211.12875), [DGCBench](https://openreview.net/forum?id=dKVUUZfcW9), [PyAGC Benchmark (NeurIPS 2026, Ours)](https://arxiv.org/abs/2602.08519) |
 | **Non-Parametric** | [SSGC (ICLR'21)](https://openreview.net/forum?id=CYO5T-YjWZV), [SAGSC (AAAI'23)](https://ojs.aaai.org/index.php/AAAI/article/view/25918), [MS2CAG (KDD'25)](https://arxiv.org/abs/2411.11074) |
 | **Deep Decoupled** | [DGI (ICLR'19)](https://arxiv.org/abs/1809.10341), [S3GC (NeurIPS'22)](https://proceedings.neurips.cc/paper_files/paper/2022/hash/15972a9575e0f03bf82f00aebeb40774-Abstract-Conference.html), [MAGI (KDD'24)](https://arxiv.org/abs/2406.14288) |
 | **Deep Joint** | [DMoN (JMLR'23)](https://jmlr.org/papers/v24/20-998.html), [DinkNet (ICML'23)](https://proceedings.mlr.press/v202/liu23v.html), [Neuromap (NeurIPS'24)](https://arxiv.org/abs/2310.01144) |
@@ -520,13 +522,12 @@ All benchmark experiments were conducted on a single NVIDIA Tesla V100 (32GB). F
 If you find PyAGC useful in your research, please cite our papers:
 
 ```bibtex
-@article{liu2026bridging,
+@inproceedings{liu2026bridging,
   title={Bridging Academia and Industry: A Comprehensive Benchmark for Attributed Graph Clustering},
   author={Yunhui Liu and Pengyu Qiu and Yu Xing and Yongchao Liu and Peng Du and Chuntao Hong and Jiajun Zheng and Tao Zheng and Tieke He},
+  booktitle={The Fortieth Annual Conference on Neural Information Processing Systems Evaluations and Datasets Track},
   year={2026},
-  eprint={2602.08519},
-  archivePrefix={arXiv},
-  primaryClass={cs.LG}
+  url={https://openreview.net/forum?id=qBpyipVo0p}
 }
 
 @article{liu2026beyond,
