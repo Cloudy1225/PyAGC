@@ -1,6 +1,6 @@
 """PyAGC: A PyTorch library for Attributed Graph Clustering"""
 
-__version__ = '1.1.1'
+__version__ = '1.1.2'
 
 # Import main modules
 from . import clusters
