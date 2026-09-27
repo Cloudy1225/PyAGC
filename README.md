@@ -16,6 +16,11 @@
     <a href="benchmark/results/"><strong>Benchmark Results</strong></a> |
     <a href="AWESOME_AGC.md"><strong>Awesome AGC Papers</strong></a>
   </p>
+  <p>
+    <a href="https://www.nju.edu.cn/"><img src="./docs/source/_static/img/nju.png" alt="Nanjing University" height="42"></a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://www.antgroup.com/"><img src="./docs/source/_static/img/antgroup.png" alt="Ant Group" height="42"></a>
+  </p>
 </div>
 
 **PyAGC** is a production-ready, modular library and comprehensive benchmark for **Attributed Graph Clustering (AGC)**, built on [PyTorch](https://pytorch.org) and [PyTorch Geometric](https://www.pyg.org/). It unifies 20+ state-of-the-art algorithms under a principled **Encode-Cluster-Optimize (ECO)** framework, provides mini-batch implementations that scale to **111 million nodes** on a single 32GB GPU, and introduces a holistic evaluation protocol spanning supervised, unsupervised, and efficiency metrics across **12 diverse datasets**.

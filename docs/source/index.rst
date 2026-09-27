@@ -5,7 +5,7 @@ PyAGC Documentation
 
 :pyagc:`null` **PyAGC** (PyTorch Attributed Graph Clustering) is a comprehensive, modular library for attributed graph clustering built on :pytorch:`null` `PyTorch <https://pytorch.org>`_ and :pyg:`null` `PyTorch Geometric <https://www.pyg.org/>`_. It provides a unified framework for implementing, evaluating, and comparing state-of-the-art graph clustering algorithms at scale.
 
-The accompanying benchmark paper, *Bridging Academia and Industry: A Comprehensive Benchmark for Attributed Graph Clustering*, has been accepted to the `NeurIPS 2026 Evaluations and Datasets Track <https://arxiv.org/abs/2602.08519>`_.
+The accompanying `benchmark paper <https://arxiv.org/abs/2602.08519>`_ has been accepted to the NeurIPS 2026 Evaluations and Datasets Track.
 
 .. image:: https://img.shields.io/pypi/v/pyagc.svg
    :target: https://pypi.org/project/pyagc/
@@ -22,6 +22,18 @@ The accompanying benchmark paper, *Bridging Academia and Industry: A Comprehensi
 .. image:: https://img.shields.io/github/stars/Cloudy1225/PyAGC.svg?style=social
    :target: https://github.com/Cloudy1225/PyAGC
    :alt: GitHub Stars
+
+|nju-logo| |ant-logo|
+
+.. |nju-logo| image:: _static/img/nju.png
+   :target: https://www.nju.edu.cn/
+   :alt: Nanjing University
+   :height: 42px
+
+.. |ant-logo| image:: _static/img/antgroup.png
+   :target: https://www.antgroup.com/
+   :alt: Ant Group
+   :height: 42px
 
 Key Features
 ------------
