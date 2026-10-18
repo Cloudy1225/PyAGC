@@ -55,7 +55,7 @@ PyAGC implements 20+ state-of-the-art methods:
 
 **Deep Decoupled Methods**
 
-- GAE, ARGA, DGI, CCASSG, GBT, S3GC, NS4GC, MAGI
+- GAE, ARGA, DGI, CCASSG, GBT, S3GC, NS4GC, SCGC, MAGI
 
 **Deep Joint Methods**
 

@@ -275,6 +275,7 @@ Our benchmark curates **12 datasets** spanning 5 orders of magnitude in scale, d
 | [CCASSG](https://arxiv.org/abs/2106.12484)                   | NeurIPS'21   | GCN     | KMeans    | Redundancy Reduction          |
 | [S3GC](https://proceedings.neurips.cc/paper_files/paper/2022/hash/15972a9575e0f03bf82f00aebeb40774-Abstract-Conference.html) | NeurIPS'22   | GCN     | KMeans    | Contrastive (Random Walk)     |
 | [NS4GC](https://arxiv.org/abs/2408.03765)                    | TKDE'24      | GCN     | KMeans    | Contrastive (Node Similarity) |
+| [SCGC](https://arxiv.org/abs/2205.07865)                     | TNNLS'23     | GCN     | KMeans    | Contrastive (Structural MSE)  |
 | [MAGI](https://arxiv.org/abs/2406.14288)                     | KDD'24       | GNN     | KMeans    | Contrastive (Modularity)      |
 
 #### Deep Joint Methods
