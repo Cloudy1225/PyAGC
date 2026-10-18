@@ -22,7 +22,7 @@ Models are organized into the following categories:
 - **Deep Decoupled Methods**: Models where the encoder is pre-trained with a
   self-supervised objective and clustering is applied post-hoc
   (e.g., :class:`GAE`, :class:`DGI`, :class:`CCASSG`, :class:`S3GC`,
-  :class:`NS4GC`, :class:`MAGI`).
+  :class:`NS4GC`, :class:`SCGC`, :class:`MAGI`).
 - **Deep Joint Methods**: End-to-end models that jointly optimize
   representation learning and clustering
   (e.g., :class:`DAEGC`, :class:`DinkNet`, :class:`DMoN`, :class:`MinCut`,
@@ -119,6 +119,7 @@ The clustering process is **not** part of the training loop.
    GBT
    S3GC
    NS4GC
+   SCGC
    MAGI
 
 .. autoclass:: GAE
@@ -146,6 +147,10 @@ The clustering process is **not** part of the training loop.
    :undoc-members:
 
 .. autoclass:: NS4GC
+   :members:
+   :undoc-members:
+
+.. autoclass:: SCGC
    :members:
    :undoc-members:
 

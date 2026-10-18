@@ -6,6 +6,7 @@ from .neuromap import Neuromap
 from .gbt import GBT
 from .ccassg import CCASSG
 from .ns4gc import NS4GC
+from .scgc import SCGC
 from .sagsc import SAGSC
 from .sgc import SGC
 from .ssgc import SSGC
@@ -31,6 +32,7 @@ __all__ = [
     'GBT',
     'CCASSG',
     'NS4GC',
+    'SCGC',
     'SAGSC',
     'SGC',
     'SSGC',

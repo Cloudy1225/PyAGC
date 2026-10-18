@@ -700,6 +700,11 @@ PyAGC organizes 20+ state-of-the-art algorithms into the ECO framework:
      - Discrete
      - Decoupled
      - Node similarity preserving contrastive
+   * - **SCGC**
+     - Parametric
+     - Discrete
+     - Decoupled
+     - Cross-view structural consistency
    * - **MAGI**
      - Parametric
      - Discrete
