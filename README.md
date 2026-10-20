@@ -14,7 +14,8 @@
     <a href="https://pyagc.readthedocs.io"><strong>Docs</strong></a> | 
     <a href="https://pypi.org/project/pyagc"><strong>PyPI</strong></a> | 
     <a href="benchmark/results/"><strong>Benchmark Results</strong></a> |
-    <a href="AWESOME_AGC.md"><strong>Awesome AGC Papers</strong></a>
+    <a href="AWESOME_AGC.md"><strong>Awesome AGC Papers</strong></a> |
+    <a href="README.zh-CN.md"><strong>中文</strong></a>
   </p>
   <p>
     <a href="https://www.nju.edu.cn/"><img src="./docs/source/_static/img/nju.png" alt="Nanjing University" height="42"></a>
@@ -544,19 +545,24 @@ If you find PyAGC useful in your research, please cite our papers:
   archivePrefix={arXiv},
   primaryClass={cs.LG}
 }
+
+@article{liu2024reliable,
+  title={Reliable node similarity matrix guided contrastive graph clustering},
+  author={Liu, Yunhui and Gao, Xinyi and He, Tieke and Zheng, Tao and Zhao, Jianhua and Yin, Hongzhi},
+  journal={IEEE Transactions on Knowledge and Data Engineering},
+  volume={36},
+  number={12},
+  pages={9123--9135},
+  year={2024},
+  publisher={IEEE}
+}
 ```
 
 ---
 
 ## Contributing
 
-We welcome contributions! Please see our contributing guidelines:
-
-1. **Bug Reports**: Open an [issue](https://github.com/Cloudy1225/PyAGC/issues) with a minimal reproducible example.
-2. **New Methods**: Submit a PR adding your method under the ECO framework with a `main.py`, `train.conf.yaml`, and unit tests.
-3. **New Datasets**: Submit a PR with a data loader and dataset description.
-4. **Paper List**: Submit a PR to [`AWESOME_AGC.md`](AWESOME_AGC.md) to add newly published AGC papers.
-5. **Documentation**: Improvements to docs, tutorials, and examples are always appreciated.
+We welcome contributions. See [CONTRIBUTING.md](CONTRIBUTING.md) for the development setup and how to add a method, dataset, or paper.
 
 ---
 
