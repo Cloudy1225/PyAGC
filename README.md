@@ -188,9 +188,9 @@ clusters = kmeans.fit_predict(z)
 
 # 5. Evaluate — supervised + unsupervised
 sup = label_metrics(y, clusters, metrics=['ACC', 'NMI', 'ARI', 'F1'])
-unsup = structure_metrics(edge_index, clusters, metrics=['Modularity', 'Conductance'])
+unsup = structure_metrics(edge_index, clusters, metrics=['Mod', 'Cond'])
 print(f"ACC: {sup['ACC']:.4f} | NMI: {sup['NMI']:.4f} | ARI: {sup['ARI']:.4f}")
-print(f"Modularity: {unsup['Modularity']:.4f} | Conductance: {unsup['Conductance']:.4f}")
+print(f"Modularity: {unsup['Mod']:.4f} | Conductance: {unsup['Cond']:.4f}")
 ```
 
 ---
@@ -315,7 +315,7 @@ from pyagc.metrics import label_metrics, structure_metrics
 sup = label_metrics(y_true, y_pred, metrics=['ACC', 'NMI', 'ARI', 'F1'])
 
 # Unsupervised
-unsup = structure_metrics(edge_index, y_pred, metrics=['Modularity', 'Conductance'])
+unsup = structure_metrics(edge_index, y_pred, metrics=['Mod', 'Cond'])
 ```
 
 ### Benchmark Results
