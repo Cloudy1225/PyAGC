@@ -8,6 +8,7 @@ A curated list of papers on Attributed Graph Clustering (AGC). This list accompa
 
 - [Survey & Benchmark](#survey--benchmark)
 - [Research Papers](#research-papers)
+  - [Foundation Models for Attributed Graph Clustering](#foundation-models-for-attributed-graph-clustering)
   - [Non-Parametric & Decoupled Methods](#non-parametric--decoupled-methods)
   - [Deep Decoupled Methods](#deep-decoupled-methods)
   - [Deep Joint Methods](#deep-joint-methods)
@@ -50,6 +51,16 @@ A curated list of papers on Attributed Graph Clustering (AGC). This list accompa
 ## Research Papers
 
 Papers are organized following the Encode-Cluster-Optimize framework introduced in the survey. Within each category, papers are sorted by year (descending).
+
+### Foundation Models for Attributed Graph Clustering
+
+> Models applied to diverse attributed graphs for clustering without graph-specific training, fine-tuning, or hyperparameter search.
+
+| Year | Venue | Title                                                        | Code                                         |
+| ---- | ----- | ------------------------------------------------------------ | -------------------------------------------- |
+| 2026 | arXiv | [Towards One-for-All Foundation Model for Attributed Graph Clustering](https://arxiv.org/abs/2610.07778) | [Code](https://github.com/Cloudy1225/OFAG)   |
+
+---
 
 ### Non-Parametric & Decoupled Methods
 
@@ -287,6 +298,8 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue   | Title                                                        | Code                                                         |
 | ---- | ------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 2026 | VLDB  | [Breaking Structural Isolation: Scalable Graph Clustering via Community-Aware Sampling and Structural Entropy](https://arxiv.org/abs/2607.05469) | [Code](https://github.com/SELGroup/SCISE) |
+| 2026 | TKDE  | [Synergistic Dual Proxies: Enhancing Cohesion and Separability in Deep Graph Clustering](https://ieeexplore.ieee.org/abstract/document/11660737) | [Code](https://github.com/yxdongxjtu/dp_net_tkde) |
 | 2026 | SIGMOD  | [Effective Clustering for Large Multi-Relational Graphs](https://arxiv.org/abs/2508.17388) | [Code](https://github.com/HKBU-LAGAS/DEMM)                   |
 | 2025 | ICML    | [Scalable Attribute-Missing Graph Clustering via Neighborhood Differentiation](https://arxiv.org/abs/2507.13368) | —                                                            |
 | 2025 | KDD     | [Spectral Subspace Clustering for Attributed Graphs](https://arxiv.org/abs/2411.11074) | [Code](https://github.com/HKBU-LAGAS/S2CAG)                  |
@@ -312,6 +325,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue        | Title                                                        | Code                                               |
 | ---- | ------------ | ------------------------------------------------------------ | -------------------------------------------------- |
+| 2026 | NeurIPS      | [Uncovering Semantic Hierarchies in Text-Attributed Graphs via Variational EM-based LLM-GNN Synergy](https://arxiv.org/abs/2610.24624) | [Code](https://github.com/Cloudy1225/SHiFT)        |
 | 2026 | WWW          | [Node Role-Guided LLMs for Dynamic Graph Clustering](https://arxiv.org/abs/2603.13799) | [Code](https://github.com/Clearloveyuan/DyG-RoLLM) |
 | 2025 | ACL Findings | [MARK: Multi-agent Collaboration with Ranking Guidance for Text-attributed Graph Clustering](https://aclanthology.org/2025.findings-acl.314/) | [Code](https://github.com/fuyw-aisw/MARK)          |
 | 2024 | LoG          | [Large Language Model Guided Graph Clustering](https://openreview.net/forum?id=CLyhlb5DG5) | —                                                  |
@@ -385,6 +399,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue | Title                                                        | Code                                         |
 | ---- | ----- | ------------------------------------------------------------ | -------------------------------------------- |
+| 2026 | NeurIPS | [Uncovering Semantic Hierarchies in Text-Attributed Graphs via Variational EM-based LLM-GNN Synergy](https://arxiv.org/abs/2610.24624) | [Code](https://github.com/Cloudy1225/SHiFT) |
 | 2026 | KDD   | [Learning Hierarchical Knowledge in Text-Rich Networks with Taxonomy-Informed Representation Learning](https://arxiv.org/abs/2603.08159) | [Code](https://github.com/Cloudy1225/TIER)   |
 | 2025 | CIKM  | [Cequel: Cost-Effective Querying of Large Language Models for Text Clustering](https://arxiv.org/abs/2504.15640) | [Code](https://github.com/HKBU-LAGAS/Cequel) |
 
@@ -484,5 +499,25 @@ If you find this list useful, please consider citing our survey and benchmark pa
   booktitle={The Fortieth Annual Conference on Neural Information Processing Systems Evaluations and Datasets Track},
   year={2026},
   url={https://openreview.net/forum?id=qBpyipVo0p}
+}
+
+@article{liu2026towards,
+  title={Towards One-for-All Foundation Model for Attributed Graph Clustering}, 
+  author={Yunhui Liu and Xudong Jin and Kang Zhang and Danshuo An and Yu Xing and Te Song and Jia Liu and Tieke He},
+  year={2026},
+  eprint={2610.07778},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG}
+}
+
+@article{liu2024reliable,
+  title={Reliable node similarity matrix guided contrastive graph clustering},
+  author={Liu, Yunhui and Gao, Xinyi and He, Tieke and Zheng, Tao and Zhao, Jianhua and Yin, Hongzhi},
+  journal={IEEE Transactions on Knowledge and Data Engineering},
+  volume={36},
+  number={12},
+  pages={9123--9135},
+  year={2024},
+  publisher={IEEE}
 }
 ```

@@ -546,6 +546,15 @@ If you find PyAGC useful in your research, please cite our papers:
   primaryClass={cs.LG}
 }
 
+@article{liu2026towards,
+  title={Towards One-for-All Foundation Model for Attributed Graph Clustering}, 
+  author={Yunhui Liu and Xudong Jin and Kang Zhang and Danshuo An and Yu Xing and Te Song and Jia Liu and Tieke He},
+  year={2026},
+  eprint={2610.07778},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG}
+}
+
 @article{liu2024reliable,
   title={Reliable node similarity matrix guided contrastive graph clustering},
   author={Liu, Yunhui and Gao, Xinyi and He, Tieke and Zheng, Tao and Zhao, Jianhua and Yin, Hongzhi},
