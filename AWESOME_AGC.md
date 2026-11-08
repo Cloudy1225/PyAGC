@@ -68,6 +68,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue | Title                                                        | Code                                                |
 | ---- | ----- | ------------------------------------------------------------ | --------------------------------------------------- |
+| 2026 | CIKM  | [PageRank Attributed Graph Subspace Clustering](https://dl.acm.org/doi/10.1145/3799682.3840890) | —                                                   |
 | 2025 | ICML  | [Scalable Attribute-Missing Graph Clustering via Neighborhood Differentiation](https://arxiv.org/abs/2507.13368) | —                                                   |
 | 2025 | KDD   | [Spectral Subspace Clustering for Attributed Graphs](https://arxiv.org/abs/2411.11074) | [Code](https://github.com/HKBU-LAGAS/S2CAG)         |
 | 2024 | CIKM  | [Scalable and Adaptive Spectral Embedding for Attributed Graph Clustering](https://arxiv.org/abs/2408.05765) | —                                                   |
@@ -157,6 +158,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue   | Title                                                        | Code                                                         |
 | ---- | ------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 2026 | CIKM    | [Inductive Correlation Clustering with Graph Neural Networks](https://arxiv.org/abs/2608.27153) | [Code](https://github.com/FrappaN/ccgnn)                     |
 | 2026 | TMM     | [Neighborhood Consensus-guided Reinforcement Learning for Scalable Deep Graph Clustering](https://ieeexplore.ieee.org/abstract/document/11673281) | [Code](https://github.com/shallowdreamoon/RLDGC)             |
 | 2026 | ICML    | [Discriminative Attribute Graph Clustering Through Topology-Guided Contrastive Learning](https://openreview.net/forum?id=nn5hJFwMPu) | —                                                            |
 | 2026 | WWW     | [Weighted Graph Clustering via Scale Contraction and Graph Structure Learning](https://arxiv.org/abs/2601.17307) | [Code](https://github.com/HaobingLiu/CeeGCN)                 |
@@ -191,6 +193,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue     | Title                                                        | Code                                              |
 | ---- | --------- | ------------------------------------------------------------ | ------------------------------------------------- |
+| 2026 | CIKM      | [CARE: Calibrated Attribute Imputation with Deviation Refinement for Attribute-Missing Graph Clustering](https://dl.acm.org/doi/10.1145/3799682.3839981) | —                                                 |
 | 2026 | TKDE      | [Synergistic Dual Proxies: Enhancing Cohesion and Separability in Deep Graph Clustering](https://ieeexplore.ieee.org/abstract/document/11660737) | [Code](https://github.com/yxdongxjtu/dp_net_tkde) |
 | 2025 | WWW       | [Diffusion-based Graph-agnostic Clustering](https://dl.acm.org/doi/10.1145/3696410.3714652) | [Code](https://github.com/kkkkk001/DGAC)          |
 | 2025 | NeurIPS   | [Hybrid-Collaborative Augmentation and Contrastive Sample Adaptive-Differential Awareness for Robust Attributed Graph Clustering](https://arxiv.org/abs/2510.02731) | [Code](https://github.com/TianxiangZhao0474/RAGC) |
@@ -216,6 +219,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue   | Title                                                        | Code                                                     |
 | ---- | ------- | ------------------------------------------------------------ | -------------------------------------------------------- |
+| 2026 | CIKM    | [Rethinking Community Consistency in Heterogeneous Networks](https://dl.acm.org/doi/10.1145/3799682.3840705) | —                                                        |
 | 2026 | KDD     | [Cross-Contrastive Clustering for Multimodal Attributed Graphs with Dual Graph Filtering](https://arxiv.org/abs/2511.20030) | [Code](https://github.com/HaoranZ99/DGF)                 |
 | 2025 | MM      | [Disentangling Homophily and Heterophily in Multimodal Graph Clustering](https://arxiv.org/abs/2507.15253) | [Code](https://github.com/Uncnbb/DMGC)                   |
 | 2025 | AAAI    | [Deep Multi-modal Graph Clustering via Graph Transformer Network](https://ojs.aaai.org/index.php/AAAI/article/view/32844) | —                                                        |
@@ -282,6 +286,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue | Title                                                        | Code |
 | ---- | ----- | ------------------------------------------------------------ | ---- |
+| 2026 | CIKM  | [CARE: Calibrated Attribute Imputation with Deviation Refinement for Attribute-Missing Graph Clustering](https://dl.acm.org/doi/10.1145/3799682.3839981) | —    |
 | 2026 | TPAMI | [AMGC2: Rethinking Deep Graph Clustering With a High Attribute-Missing Ratio](https://doi.ieeecomputersociety.org/10.1109/TPAMI.2026.3725335) | —    |
 | 2025 | MM    | [Clustering-Oriented Generative Attribute Graph Imputation](https://arxiv.org/abs/2507.19085) | —    |
 | 2025 | ICML  | [Scalable Attribute-Missing Graph Clustering via Neighborhood Differentiation](https://arxiv.org/abs/2507.13368) | —    |
@@ -325,6 +330,7 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue        | Title                                                        | Code                                               |
 | ---- | ------------ | ------------------------------------------------------------ | -------------------------------------------------- |
+| 2026 | CIKM         | [MASK: Minority-aware Semantic Alignment via Knowledge Enhancement for Long-tailed Graph Clustering](https://dl.acm.org/doi/10.1145/3799682.3839909) | [Code](https://github.com/fuyw-aisw/MASK)          |
 | 2026 | NeurIPS      | [Uncovering Semantic Hierarchies in Text-Attributed Graphs via Variational EM-based LLM-GNN Synergy](https://arxiv.org/abs/2610.24624) | [Code](https://github.com/Cloudy1225/SHiFT)        |
 | 2026 | WWW          | [Node Role-Guided LLMs for Dynamic Graph Clustering](https://arxiv.org/abs/2603.13799) | [Code](https://github.com/Clearloveyuan/DyG-RoLLM) |
 | 2025 | ACL Findings | [MARK: Multi-agent Collaboration with Ranking Guidance for Text-attributed Graph Clustering](https://aclanthology.org/2025.findings-acl.314/) | [Code](https://github.com/fuyw-aisw/MARK)          |
@@ -351,6 +357,9 @@ Papers are organized following the Encode-Cluster-Optimize framework introduced 
 
 | Year | Venue  | Title                                                        | Code                                             |
 | ---- | ------ | ------------------------------------------------------------ | ------------------------------------------------ |
+| 2026 | CIKM   | [When Does Structural Entropy Track Labels? Margins, Diagnostics, and Failure Modes in Graph Clustering](https://dl.acm.org/doi/10.1145/3799682.3840913) | —                                                |
+| 2026 | CIKM   | [Inductive Correlation Clustering with Graph Neural Networks](https://arxiv.org/abs/2608.27153) | [Code](https://github.com/FrappaN/ccgnn)         |
+| 2026 | CIKM   | [ExplainCC: Explaining Correlated Clusters by Node Labels](https://arxiv.org/abs/2610.38667) | [Code](https://version.helsinki.fi/dacs/explaincc) |
 | 2025 | WWW    | [Robust Deep Signed Graph Clustering via Weak Balance Theory](https://arxiv.org/abs/2502.05472) | [Code](https://github.com/yaoyaohuanghuang/DSGC) |
 | 2024 | TKDD   | [Towards Faster Deep Graph Clustering via Efficient Graph Auto-Encoder](https://dl.acm.org/doi/abs/10.1145/3674983) | [Code](https://github.com/Marigoldwu/FastDGC)    |
 | 2023 | MM     | [Reinforcement Graph Clustering with Unknown Cluster Number](https://arxiv.org/abs/2308.06827) | [Code](https://github.com/yueliu1999/RGC)        |
