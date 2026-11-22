@@ -34,7 +34,8 @@ def _hungarian_match(y_true: np.ndarray, y_pred: np.ndarray) -> np.ndarray:
         y_pred (np.ndarray): Predicted cluster labels of shape :obj:`(n_samples,)`.
 
     Returns:
-        Aligned predicted labels of shape :obj:`(n_samples,)`.
+        Aligned prediction codes of shape :obj:`(n_samples,)`.
+        True label codes follow the sorted order of unique true labels.
     """
     true_labels = np.unique(y_true)
     pred_labels = np.unique(y_pred)
@@ -54,12 +55,10 @@ def _hungarian_match(y_true: np.ndarray, y_pred: np.ndarray) -> np.ndarray:
     # Use the Hungarian algorithm (linear sum assignment) to find the optimal label mapping
     row_ind, col_ind = linear_sum_assignment(-cost_matrix)
 
-    # Map predicted label values to true label values
-    label_map = {pred_labels[j]: true_labels[i] for i, j in zip(row_ind, col_ind)}
-
-    # Apply mapping safely
-    y_pred_aligned = np.array([label_map.get(label, label) for label in y_pred])
-    return y_pred_aligned
+    # Matched predictions use the true label code. Unmatched codes stay distinct.
+    pred_codes = np.arange(len(pred_labels)) + len(true_labels)
+    pred_codes[col_ind] = row_ind
+    return pred_codes[np.searchsorted(pred_labels, y_pred)]
 
 
 VALID_METRICS = ('NMI', 'ARI', 'Homo', 'Comp', 'ACC', 'F1')
@@ -108,7 +107,8 @@ def label_metrics(
 
     # If accuracy or Macro-F1 is needed, perform alignment only once
     if 'ACC' in metrics or 'F1' in metrics:
-        y_pred = _hungarian_match(y_true, y_pred)
+        aligned_pred = _hungarian_match(y_true, y_pred)
+        _, aligned_true = np.unique(y_true, return_inverse=True)
 
     # Compute selected metrics
     if 'NMI' in metrics:
@@ -120,8 +120,8 @@ def label_metrics(
     if 'Comp' in metrics:
         results['Comp'] = completeness_score(y_true, y_pred)
     if 'ACC' in metrics:
-        results['ACC'] = accuracy_score(y_true, y_pred)
+        results['ACC'] = accuracy_score(aligned_true, aligned_pred)
     if 'F1' in metrics:
-        results['F1'] = f1_score(y_true, y_pred, average='macro')
+        results['F1'] = f1_score(aligned_true, aligned_pred, average='macro')
 
     return results
